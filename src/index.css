@@ -1,0 +1,509 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+/* ---------------------navber design start ------------------- */
+/* bdt taka icon  */
+.price-container {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+}
+
+.main-price {
+  color: #f57224;      /* Daraz orange */
+  font-weight: bold;
+}
+
+.symbol {
+  font-size: 15px;     /* ৳ সিম্বলের সাইজ */
+}
+
+.quicktectaka {
+  font-size: 18px;     /* Amount এর সাইজ */
+}
+
+.main-symbol {
+  font-weight: semibold;
+}
+
+.symbols {
+  font-size: 14px;     /* ৳ সিম্বলের সাইজ */
+}
+
+.quicktectakas {
+  font-size: 14px;     /* Amount এর সাইজ */
+}
+
+.price-details {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 14px;
+}
+
+.discount {
+  color: #2ab23a;     /* Green */
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Custom Scrollbar section Start*/
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #007cde;
+  border-radius: 6px;
+}
+
+/* Hide any overflow or “peek” bars from react-slick */
+.slick-slider,
+.slick-list,
+.slick-track {
+  overflow: hidden !important;
+}
+
+.slick-slide {
+  /* remove left/right borders or ghost spacing */
+  outline: none;
+}
+:global(.slick-slider),
+:global(.slick-list),
+:global(.slick-track) {
+  overflow: hidden !important;
+}
+
+
+
+/* premimum product start  */
+
+/* Add this in your global styles */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+
+/* popular category home page start */
+@keyframes scroll-x {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-x {
+  display: flex;
+  width: max-content;
+  animation: scroll-x 25s linear infinite;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* popular category home page end */
+/* premimum product end  */
+
+/* navbar start  */
+.animate-marquee {
+  display: inline-flex;
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* navbar end  */
+
+
+/* home category banner start  */
+@keyframes slide-smooth {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+
+.animate-slide-smooth {
+  animation: slide-smooth 4s ease-in-out forwards;
+}
+
+
+/* home category banner end  */
+
+
+/* peoduct details  */
+/* === Premium Promo Banner Animations === */
+   @keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.5);
+  }
+}
+
+@keyframes floatTag {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* === Apply animations === */
+.promo-card {
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+.promo-tag {
+  animation: floatTag 3s infinite ease-in-out;
+}
+
+
+
+
+
+/*------------- login part start ------------ */
+@media (min-width: 2560px) {
+  .login-card {
+    top: 25% !important;
+    height: 45vh;
+    right: 18%;
+    max-width: 560px !important;
+  }
+
+  .big-circle {
+    top: 10% !important;
+    width: 55vw !important;
+    right:10%;
+    max-width: 520px !important;
+  }
+
+  .man-image {
+    left: 20% !important;
+    height: 700px !important;
+    max-width: 600px !important;
+  }
+}
+
+/* 33% Zoom - Very large 4K screens or 33% browser zoom */
+@media (min-width: 3840px) {
+  .login-card {
+    top: 28% !important;
+    height: 33vh;
+    right: 20%;
+    max-width: 780px !important;
+  }
+
+  .big-circle {
+    top: 8% !important;
+    width: 60vw !important;
+    right: 10%;
+    max-width: 700px !important;
+  }
+
+  .man-image {
+    left: 22% !important;
+    height: 1020px !important;
+    max-width: 780px !important;
+  }
+}
+
+/* 25% Zoom - Extremely large 5K+ screens or 25% zoom */
+@media (min-width: 5120px) {
+  .login-card {
+    top: 27% !important;
+    height: 32vh;
+    max-width: 820px !important;
+  }
+
+  .big-circle {
+    top: 12% !important;
+    width: 68vw !important;
+    max-width: 850px !important;
+  }
+
+  .man-image {
+    left: 28% !important;
+    height: 1040px !important;
+    top:30%;
+    max-width: 1000px !important;
+  }
+}
+
+
+/*------------- login part end ------------ */
+
+
+/*------------- profile part start -------- */
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;    
+}
+
+/*------------- profile part start -------- */
+
+
+/*-------- home middle part start -------- */
+/* Hide scrollbar but allow scrolling */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
+}
+
+/*-------- home middle part end -------- */
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+
+/* notification start  */
+
+/* notification end  */
+
+/* ---------------------navber design end  ------------------- */
+
+.login-container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+
+
+
+
+
+@media screen and (max-width: 600px) {
+  .login-container {
+    width: 100%;
+    border-radius: 0;
+  }
+}
+
+
+
+
+/* popular category part start  */
+/* Infinite horizontal scroll animation */
+@keyframes scroll-x {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Infinite auto scroll effect */
+/* Auto-scroll effect visually */
+.cursor-grab {
+  cursor: grab;
+}
+
+.cursor-grabbing {
+  cursor: grabbing;
+}
+
+
+
+
+/* popular category part end  */
+
+
+/* product details editor start  */
+.product-title {
+  color: var(--color-black);
+  display: inline;
+  font-size: var(--font-size-2);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--font-lineheight-3);
+  margin: 0;
+  vertical-align: middle;
+
+  /* আগের Tailwind থেকে যেগুলো দরকার */
+  font-family: inherit;
+  margin-top: 0.5rem; /* mt-2 */
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 700; /* font-bold */
+  line-height: 1.5; /* leading-normal */
+  color: #111827; /* text-gray-900 */
+  display: block; /* block */
+}
+
+@media (min-width: 768px) {
+  .product-title {
+    font-size: var(--font-size-2); /* md:text-2xl equivalent */
+    display: none; /* md:hidden */
+  }
+}
+
+.price-default--current--F8OlYIo {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 44px;
+  white-space: nowrap;
+  color: #dc2626; /* same as Tailwind's text-red-600 */
+}
+
+.price-default--current--F8OlYIo .price-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+.price-default--current--F8OlYIo .currency {
+  font-size: 30px;
+  margin-right: 4px;
+}
+
+.price-default--current--F8OlYIo .amount {
+  font-size: 30px;
+}
+
+.import-note {
+  color: #757575;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+/* prduct details end  */
+
+/* serach part  */
+
+
+/* navbar campain design start  */
+@keyframes textPulse {
+  0%   { color: #7f1d1d; }   /* Dark red / maroon */
+  25%  { color: #ef4444; }   /* Medium red */
+  50%  { color: #f87171; }   /* Bright red */
+  75%  { color: #ef4444; }   /* Medium red */
+  100% { color: #7f1d1d; }   /* Back to dark red */
+}
+
+
+.custom-container {
+  background-color: #ffffff !important;
+  padding-top: 0.75rem !important;   /* py-3 */
+  padding-bottom: 0.75rem !important;
+  padding-left: 1rem !important;     /* px-4 */
+  padding-right: 1rem !important;
+
+  max-width: 5280px !important;      /* default max-w-[1280px] */
+  margin-left: auto !important;      /* mx-auto */
+  margin-right: auto !important;
+
+  position: relative !important;
+}
+
+/* sm:max-w-[95%] */
+@media (min-width: 640px) {
+  .custom-container {
+    max-width: 1 !important;
+  }
+}
+
+/* md:max-w-[1380px] */
+@media (min-width: 728px) {
+  .custom-container {
+    max-width: 1 !important;
+  }
+}
+
+/* lg:px-20 */
+@media (min-width: 1024px) {
+  .custom-container {
+    padding-left: 5rem !important;   /* 20 * 0.25rem */
+    padding-right: 5rem !important;
+  }
+}
+
+
+
+
+/* admin show all product scrollbar  */
+/* Always-visible horizontal scrollbar for product table */
+ /* Always-visible scrollbar utility — শুধু .always-scrollbar class থাকা element এ কাজ করবে */
+  .always-scrollbar {
+  overflow: scroll; /* overflow-x: scroll এর বদলে */
+}
+
+.always-scrollbar::-webkit-scrollbar {
+  width: 10px;   /* vertical scrollbar এর জন্য */
+  height: 10px;  /* horizontal scrollbar এর জন্য */
+  display: block;
+}
+
+.always-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+
+.always-scrollbar::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  border-radius: 8px;
+}
+
+.always-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+.always-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #9ca3af #f1f1f1;
+}

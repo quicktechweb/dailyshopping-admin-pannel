@@ -1,0 +1,18 @@
+# robots.txt for LuckyShop
+
+# Allow all search engines to crawl the main site
+User-agent: *
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /login/
+Disallow: /register/
+Disallow: /checkout/
+Disallow: /cart/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://www.luckyshop.com.bd/sitemap.xml
+
+# Block specific crawlers if needed
+# User-agent: Googlebot-Image
+# Disallow: /images/private/

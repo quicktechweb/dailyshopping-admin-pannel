@@ -1,0 +1,12 @@
+.admin-design {
+    border-radius: 10px;
+}
+
+.button-admin{
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color:#113350;
+    color: white;
+    border:2px solid white;
+    /* margin-right: 5px; */
+}

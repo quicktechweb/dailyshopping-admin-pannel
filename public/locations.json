@@ -1,0 +1,1355 @@
+{
+  "divisions": [
+    {
+      "name": "রাজশাহী Rajshahi",
+      "districts": [
+        {
+          "name": "রাজশাহী Rajshahi",
+          "upazilas": [
+            {
+              "name": "রাজশাহী-সদর Rajshahi Sadar",
+              "thanas": [
+                "গোদাগাড়ী-মডেল Godagari Model",
+                "মোহনপুর-থানা Mohanpur Thana",
+                "বাগমারা Bagmara",
+                "চারঘাট-মডেল Charghat Model",
+                "পুঠিয়া Puthia",
+                "দর্গাপুর Durgapur",
+                "বাঘা Bagha",
+                "তানোর Tanore"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "বগুড়া Bogura",
+          "upazilas": [
+            {
+              "name": "বগুড়া-সদর Bogura Sadar",
+              "thanas": [
+                "বগুড়াসদর Bogura Sadar",
+                "কাহালু Kahaloo",
+                "সারিয়াকান্দি Sariakandi",
+                "শাজাহানপুর Shajahanpur",
+                "দপুচাচিঁচিয়া Dupchanchia",
+                "আদমদীঘি Adamdighi",
+                "নন্দীগ্রাম Nandigram",
+                "সোনাতলা Sonatala",
+                "ধুনট Dhunot",
+                "গাবতলী Gabtali",
+                "শেরপুর Sherpur",
+                "শিবগঞ্জ Shibganj"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "জয়পুরহাট Joypurhat",
+          "upazilas": [
+            {
+              "name": "জয়পুরহাটসদর Joypurhat Sadar",
+              "thanas": [
+                "জয়পুরহাটসদর-উপজেলা Joypurhat Sadar Upazila",
+                "পাঁচবিবি-উপজেলা Panchbibi Upazila",
+                "কালাই-উপজেলা Kalai Upazila",
+                "আক্কেলপুর-উপজেলা Akkelpur Upazila",
+                "ক্ষেতলাল-উপজেলা Khetlal Upazila"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "নাটোর Natore",
+          "upazilas": [
+            {
+              "name": "নাটোরসদর Natore Sadar",
+              "thanas": [
+                "নাটোরসদর Natore Sadar",
+                "সিংড়া Singra",
+                "বড়াইগ্রাম Baraigram",
+                "বাগাতিপাড়া Bagatipara",
+                "লালপুর Lalpur",
+                "গুরুদাসপুর Gurudaspur",
+                "নলডাঙ্গা Naldanga"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "চাঁপাইনবাবগঞ্জ Chapai Nawabganj",
+          "upazilas": [
+            {
+              "name": "চাঁপাইনবাবগঞ্-সদর Chapai Nawabganj Sadar",
+              "thanas": [
+                "চাঁপাইনবাবগঞ্-সদর Chapai Nawabganj Sadar",
+                "গোমস্তাপুর Gomostapur",
+                "নাচোল Nachol",
+                "ভোলাহাট Bholahat",
+                "শিবগঞ্জ Shibganj"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "পাবনা Pabna",
+          "upazilas": [
+            {
+              "name": "পাবনা-সদর Pabna Sadar",
+              "thanas": [
+                "সুজানগর Sujanagar",
+                "ঈশ্বরদী Ishwardi",
+                "ভাঙ্গুড়া Bhangura",
+                "পাবনাসদর Pabna Sadar",
+                "বেড়া Bera",
+                "আটঘরিয়া Atghoria",
+                "চাটমোহর Chatmohar",
+                "সাথীথিয়া Santhia",
+                "ফরিদপুর Faridpur",
+                "আতাইকুলা Ataikula",
+                "আমিনপুর Aminpur"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "সিরাজগঞ্জ Sirajganj",
+          "upazilas": [
+            {
+              "name": "সিরাজগঞ্জসদর Sirajganj Sadar",
+              "thanas": [
+                "সিরাজগঞ্জসদর Sirajganj Sadar",
+                "শাহজাদপুর Shahjadpur",
+                "উল্লাপাড়া Ullapara",
+                "চৌহালী Chouhali",
+                "তাড়াশ Tarash",
+                "কাজীপুর Kazipur",
+                "কামারখন্দ Kamarkhand",
+                "রায়গঞ্জ Raiganj",
+                "বেলকুচি Belkuchi",
+                "বঙ্গবন্ধুসেতু-পশ্চিম Bangabandhu Bridge West",
+                "সলংগা Salanga",
+                "এনায়েতপুর Enayetpur"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "নওগাঁ Naogaon",
+          "upazilas": [
+            {
+              "name": "নওগাঁ-সদর Naogaon Sadar",
+              "thanas": [
+                "নওগাঁসদর-মডেল Naogaon Sadar Model",
+                "মহাদেবপুর Mahadevpur",
+                "বদলগাছী Badalgachhi",
+                "পত্নীতলা Patnitala",
+                "ধামইরহাট-থানা Dhamoirhat Thana",
+                "নিয়ামতপুর Niamatpur",
+                "মান্দা Manda",
+                "আত্রাই Atrai",
+                "রাণীনগর Raninagar",
+                "নওগাঁথানা Naogaon Thana",
+                "পোরশা Porsha",
+                "সাপাহার Sapahar"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+    ,
+    {
+      "name": "সিলেট Sylhet",
+      "districts": [
+        {
+          "name": "সিলেট Sylhet",
+          "upazilas": [
+            {
+              "name": "সিলেটসদর Sylhet Sadar",
+              "thanas": [
+                "সিলেটসদর Sylhet Sadar",
+                "বালাগঞ্জ Balaganj",
+                "ফেঞ্চুগঞ্জ Fenchuganj",
+                "গোলাপগঞ্জ Golapganj",
+                "গোয়াইনঘাট Gowainghat",
+                "বিয়ানীবাজার Beanibazar",
+                "কানাইঘাট Kanaighat",
+                "জকিগঞ্জ Zakiganj",
+                "বিশ্বনাথ Bishwanath",
+                "কম্পানীগঞ্জ Companiganj",
+                "জৈন্তাপুর Jaintapur",
+                "দক্ষিণসুরমা Dakshin Surma",
+                "ওসমানী Osmaninagar"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "মৌলভীবাজার Moulvibazar",
+          "upazilas": [
+            {
+              "name": "মৌলভীবাজারসদর Moulvibazar Sadar",
+              "thanas": [
+                "মৌলভীবাজারসদর Moulvibazar Sadar",
+                "রাজনগর Rajnagar",
+                "কুলাউড়া Kulaura",
+                "শ্রীমঙ্গল Sreemangal",
+                "বড়লেখা Barlekha",
+                "কমলগঞ্জ Kamalganj",
+                "জুড়ী Juri"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "হবিগঞ্জ Habiganj",
+          "upazilas": [
+            {
+              "name": "হবিগঞ্জ-সদর Habiganj Sadar",
+              "thanas": [
+                "হবিগঞ্জসদর-মডেল-থানা Habiganj Sadar Model Thana",
+                "শায়েস্তাগঞ্জ-থানা Shayestaganj Thana",
+                "লাখাই-থানা Lakhai Thana",
+                "বানিয়াচং-থানা Baniachong Thana",
+                "আজমীরীগঞ্জ-থানা Azmiriganj Thana",
+                "মাধবপুর-থানা Madhabpur Thana",
+                "চুনারুঘাট-থানা Chunarughat Thana",
+                "বাহুবল-মডেল-থানা Bahubal Model Thana",
+                "নবীগঞ্জ-থানা Nabiganj Thana"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "সুনামগঞ্জ Sunamganj",
+          "upazilas": [
+            {
+              "name": "সুনামগঞ্জসদর Sunamganj Sadar",
+              "thanas": [
+                "সুনামগঞ্জসদর Sunamganj Sadar",
+                "বিশ্বম্ভরপুর Bishwambharpur",
+                "তাহিরপুর Tahirpur",
+                "ধর্মপাশা Dharmapasha",
+                "মধ্যনগর Madhyanagar",
+                "জামালগঞ্জ Jamalganj",
+                "দিরাই Dirai",
+                "শাল্লা Shalla",
+                "জগন্নাথপুর Jagannathpur",
+                "ছাতক Chatak",
+                "দোয়ারাবাজার Dowarabazar",
+                "শান্তিগঞ্জ Shantiganj"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+    ,
+
+    {
+      "name": "রংপুর Rangpur",
+      "districts": [
+        {
+          "name": "রংপুর Rangpur",
+          "upazilas": [
+            {
+              "name": "রংপুরসদর Rangpur Sadar",
+              "thanas": [
+                "রংপুরসদর Rangpur Sadar",
+                "কাউনিয়া Kaunia",
+                "গংগাচড়া Gangachara",
+                "তারাগঞ্জ Taraganj",
+                "পীরগঞ্জ Pirganj",
+                "পীরগাছা Pirgacha",
+                "বদরগঞ্জ Badarganj",
+                "মিঠাপুকুর Mithapukur"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "কুড়িগ্রাম Kurigram",
+          "upazilas": [
+            {
+              "name": "কুড়িগ্রামসদর Kurigram Sadar",
+              "thanas": [
+                "কুড়িগ্রামসদর Kurigram Sadar",
+                "উলিপুর Ulipur",
+                "কচাকাটা Kochakata",
+                "চিলমারী Chilmari",
+                "ঢুষমারা Dushmara",
+                "নাগেশ্বরী Nageshwari",
+                "ফুলবাড়ী Phulbari",
+                "ভূরুঙ্গামারী Bhurungamari",
+                "রাজারহাট Rajarhat",
+                "রাজিবপুর Rajibpur",
+                "রৌমারী Roumari"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "দিনাজপুর Dinajpur",
+          "upazilas": [
+            {
+              "name": "দিনাজপুরসদর Dinajpur Sadar",
+              "thanas": [
+                "দিনাজপুরসদর Dinajpur Sadar",
+                "বীরগঞ্জ Birganj",
+                "কাহারোল Kaharol",
+                "খানসামা Khansama",
+                "বোচাগঞ্জ Bochaganj",
+                "বিরল Biral",
+                "চিরিবন্দর Chirirbandar",
+                "পার্বতীপুর Parbatipur",
+                "ফুলবাড়ী Phulbari",
+                "বিরামপুর Birampur",
+                "নবাবগঞ্জ Nawabganj",
+                "হাকিমপুর Hakimpur",
+                "ঘোড়াঘাট Ghoraghat"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "ঠাকুরগাঁও Thakurgaon",
+          "upazilas": [
+            {
+              "name": "ঠাকুরগাঁওসদর Thakurgaon Sadar",
+              "thanas": [
+                "ঠাকুরগাঁওসদর Thakurgaon Sadar",
+                "বালিয়াডাঙ্গী Baliadangi",
+                "পীরগঞ্জ Pirganj",
+                "রাণীশংকৈল Ranishankail",
+                "হরিপুর Haripur",
+                "রুহিয়া Ruhia"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "নীলফামারী Nilphamari",
+          "upazilas": [
+            {
+              "name": "নীলফামারীসদর Nilphamari Sadar",
+              "thanas": [
+                "নীলফামারীসদর Nilphamari Sadar",
+                "ডোমার Domar",
+                "ডিমলা Dimla",
+                "জলঢাকা Jaldhaka",
+                "কিশোরগঞ্জ Kishoreganj",
+                "সৈয়দপুর Saidpur"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "লালমনিরহাট Lalmonirhat",
+          "upazilas": [
+            {
+              "name": "লালমনিরহাটসদর Lalmonirhat Sadar",
+              "thanas": [
+                "লালমনিরহাটসদর Lalmonirhat Sadar",
+                "হাতীবান্ধা Hatibandha",
+                "পাটগ্রাম Patgram",
+                "কালীগঞ্জ Kaliganj",
+                "আদিতমারী Aditmari"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "গাইবান্ধা Gaibandha",
+          "upazilas": [
+            {
+              "name": "গাইবান্ধাসদর Gaibandha Sadar",
+              "thanas": [
+                "গাইবান্ধাসদর Gaibandha Sadar",
+                "সাঘাটা Saghata",
+                "গোবিন্দগঞ্জ Gobindaganj",
+                "সাদুল্লাপুর Sadullapur",
+                "পলাশবাড়ী Palashbari",
+                "সুন্দরগঞ্জ Sundarganj",
+                "ফুলছড়ি Phulchhari"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "পঞ্চগড় Panchagarh",
+          "upazilas": [
+            {
+              "name": "পঞ্চগড়সদর Panchagarh Sadar",
+              "thanas": [
+                "পঞ্চগড়সদর Panchagarh Sadar",
+                "বোদা Boda",
+                "আটোয়ারী Atwari",
+                "দেবীগঞ্জ Debiganj",
+                "তেতুলিয়া Tetulia"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "চিলমারী Chilmari",
+          "upazilas": [
+            {
+              "name": "চিলমারী Chilmari",
+              "thanas": ["চিলমারী Chilmari"]
+            },
+            {
+              "name": "বড়াইগ্রাম Baraigram",
+              "thanas": ["বড়াইগ্রাম Baraigram"]
+            },
+            {
+              "name": "ধূপগুড়ি Dhupguri",
+              "thanas": ["ধূপগুড়ি Dhupguri"]
+            },
+            {
+              "name": "ফুলগাছা Phulgacha",
+              "thanas": ["ফুলগাছা Phulgacha"]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "ময়মনসিংহ Mymensingh",
+      "districts": [
+        {
+          "name": "ময়মনসিংহ Mymensingh",
+          "upazilas": [
+            {
+              "name": "ময়মনসিংহ-সদর Mymensingh Sadar",
+              "thanas": [
+                "ময়মনসিংহসদর-থানা Mymensingh Sadar Thana",
+                "ফুলবাড়ীয়া Fulbaria",
+                "ত্রিশাল Trishal",
+                "ভালুকা Bhaluka",
+                "হালুয়াঘাট Haluaghat",
+                "ঈশ্বরগঞ্জ Ishwarganj",
+                "নান্দাইল Nandail",
+                "গৌরীপুর Gouripur",
+                "গফরগাঁও Gafargaon",
+                "মুক্তাগাছা Muktagacha",
+                "ধোবাউড়া Dhobaura",
+                "ফুলপুর Phulpur",
+                "তারাকান্দা Tarakanda"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "জামালপুর Jamalpur",
+          "upazilas": [
+            {
+              "name": "জামালপুর-সদর Jamalpur Sadar",
+              "thanas": [
+                "জামালপুর-থানা Jamalpur Thana",
+                "সরিষাবাড়ী-থানা Sarishabari Thana",
+                "ইসলামপুর-থানা Islampur Thana",
+                "মেলান্দহ-থানা Melandaha Thana",
+                "মাদারগঞ্জ-মডেল-থানা Madarganj Model Thana",
+                "দেওয়ানগঞ্জ-মডেলথানা Dewanganj Model Thana",
+                "বকশীগঞ্জ-থানা Bakshiganj Thana"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "শেরপুর Sherpur",
+          "upazilas": [
+            {
+              "name": "শেরপুর-সদর Sherpur Sadar",
+              "thanas": [
+                "শেরপুর-সদর Sherpur Sadar",
+                "নালিতাবাড়ী Nalitabari",
+                "নকলা Nakla",
+                "শ্রীবরদী Sreebordi",
+                "ঝিনাইগাতী Jhenaigati"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "নেত্রকোনা Netrokona",
+          "upazilas": [
+            {
+              "name": "নেত্রকোনা-সদর Netrokona Sadar",
+              "thanas": [
+                "নেত্রকোনা-সদর Netrokona Sadar",
+                "বারহাট্টা Barhatta",
+                "মদন Madan",
+                "মোহনগঞ্জ Mohanganj",
+                "পূর্বধলা Purbadhala",
+                "খালিয়াজুরী Khaliajuri",
+                "কলমাকান্দা Kalmakanda",
+                "দুর্গাপুর Durgapur",
+                "কেন্দুয়া Kendua",
+                "আটপাড়া Atpara"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "কিশোরগঞ্জ Kishoreganj",
+          "upazilas": [
+            {
+              "name": "কিশোরগঞ্জ-সদর Kishoreganj Sadar",
+              "thanas": ["কিশোরগঞ্জ-সদরথানা Kishoreganj Sadar Thana"]
+            },
+            {
+              "name": "হোসেনপুর Hossainpur",
+              "thanas": ["হোসেনপুর-থানা Hossainpur Thana"]
+            },
+            {
+              "name": "কটিয়াদী Katiadi",
+              "thanas": ["কটিয়াদী-থানা Katiadi Thana"]
+            },
+            {
+              "name": "কুলিয়ারচর Kuliarchar",
+              "thanas": ["কুলিয়ারচর-থানা Kuliarchar Thana"]
+            }
+          ]
+        },
+        {
+          "name": "মধুপুর Madhupur",
+          "upazilas": [
+            {
+              "name": "মধুপুরসদর Madhupur Sadar",
+              "thanas": ["মধুপুর-সদর-থানা Madhupur Sadar Thana"]
+            },
+            {
+              "name": "গাংনী Gangni",
+              "thanas": ["গাংনী-থানা Gangni Thana"]
+            },
+            {
+              "name": "তাহিরপুর Tahirpur",
+              "thanas": ["তাহিরপুর-থানা Tahirpur Thana"]
+            }
+          ]
+        }
+      ]
+    }
+    ,
+
+    {
+      "name": "খুলনা Khulna",
+      "districts": [
+        {
+          "name": "খুলনা Khulna",
+          "upazilas": [
+            {
+              "name": "খুলনা-সদর Khulna Sadar",
+              "thanas": [
+                "রূপসা-থানা Rupsa Thana",
+                "দিঘলিয়া-থানা Digholia Thana",
+                "তেরখাদা-থানা Terokhada Thana",
+                "বটিয়াঘাটা-থানা Batiaghata Thana",
+                "দাকোপ-থানা Dacope Thana",
+                "ডুমুরিয়া-থানা Dumuria Thana",
+                "ফুলতলা-থানা Phultala Thana",
+                "পাইকগাছা-থানা Paikgacha Thana",
+                "কয়রা-থানা Koyra Thana"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "বাগেরহাট Bagerhat",
+          "upazilas": [
+            {
+              "name": "বাগেরহাট-সদর Bagerhat Sadar",
+              "thanas": [
+                "বাগেরহাট-সদর Bagerhat Sadar",
+                "শরণখোলা Sharankhola",
+                "রামপাল Rampal",
+                "মোড়েলগঞ্জ Morelganj",
+                "মোল্লাহাট Mollahat",
+                "কচুয়া Kachua",
+                "ফকিরহাট Fakirhat",
+                "মোংলা Mongla",
+                "চিতলমারী Chitalmari"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "সাতক্ষীরা Satkhira",
+          "upazilas": [
+            {
+              "name": "সাতক্ষীরা-সদর Satkhira Sadar",
+              "thanas": [
+                "সাতক্ষীরা-থানা Satkhira Thana",
+                "কলারোয়া-থানা Kalaroa Thana",
+                "তালা-থানা Tala Thana",
+                "পাটকেলঘাটা-থানা Patkelghata Thana",
+                "কালিগঞ্জ-থানা Kaliganj Thana",
+                "দেবহাটা,-থানা Debhata Thana",
+                "আশাশুনি-থানা Assasuni Thana",
+                "শ্যামনগর-থানা Shyamnagar Thana"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "যশোর Jessore",
+          "upazilas": [
+            {
+              "name": "যশোরসদর Jessore Sadar",
+              "thanas": [
+                "যশোরসদর-থানা Jessore Sadar Thana",
+                "চৌগাছা-থানা Chowgacha Thana",
+                "অভয়নগর-থানা Abhaynagar Thana",
+                "বাঘারপাড়া-থানা Bagharpara Thana",
+                "মণিরামপুর-থানা Monirampur Thana",
+                "কেশবপুর-থানা Keshabpur Thana",
+                "ঝিকরগাছা-থানা Jhikargacha Thana",
+                "শার্শা-থানা Sharsha Thana",
+                "বেনাপোল-পোর্ট-থানা Benapole Port Thana"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "নড়াইল Narail",
+          "upazilas": [
+            {
+              "name": "নড়াইলসদর Narail Sadar",
+              "thanas": [
+                "নড়াইলসদর Narail Sadar",
+                "লোহাগড়া Lohagara",
+                "কালিয়া Kalia",
+                "নড়াগাতী Naragati"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "ঝিনাইদহ Jhenaidah",
+          "upazilas": [
+            {
+              "name": "ঝিনাইদহ-সদর Jhenaidah Sadar",
+              "thanas": [
+                "হরিনাকুন্ডু-থানা Harinakunda Thana",
+                "কালীগঞ্জ-থানা Kaliganj Thana",
+                "কোটচাঁদপুর-থানা Kotchandpur Thana",
+                "মহেশপুর-থানা Maheshpur Thana"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "চুয়াডাঙ্গা Chuadanga",
+          "upazilas": [
+            {
+              "name": "চুয়াডাঙ্গা-সদর Chuadanga Sadar",
+              "thanas": [
+                "চুয়াডাঙ্গা-সদর Chuadanga Sadar",
+                "আলমডাঙ্গা Alamdanga",
+                "দর্শনা Darshana",
+                "জীবননগর Jibannagar",
+                "দামড়ু হুদা Damurhuda"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "মেহেরপুর Meherpur",
+          "upazilas": [
+            {
+              "name": "মেহেরপুর-সদর Meherpur Sadar",
+              "thanas": [
+                "মেহেরপুর-সদর Meherpur Sadar",
+                "মজিবনগর Mujibnagar",
+                "গাংনী Gangni"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "কুষ্টিয়া Kushtia",
+          "upazilas": [
+            {
+              "name": "কুষ্টিয়া-সদর Kushtia Sadar",
+              "thanas": [
+                "কুষ্টিয়া-সদর Kushtia Sadar",
+                "কুমারখালী Kumarkhali",
+                "খোকসা Khoksa",
+                "মিরপুর Mirpur",
+                "ভেড়ামারা Bheramara",
+                "দৌলতপুর Daulatpur",
+                "ইসলামী-বিশ্ববিদ্যালয় Islamic University"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "মাগুরা Magura",
+          "upazilas": [
+            {
+              "name": "মাগুরা-সদর Magura Sadar",
+              "thanas": [
+                "শ্রীপুর Sreepur",
+                "শালিখা Shalikha",
+                "মহম্মদপুর Mohammadpur"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+    ,
+
+    {
+      "name": "ঢাকা Dhaka",
+      "districts": [
+        {
+          "name": "ঢাকা Dhaka",
+          "upazilas": [
+            {
+              "name": "ঢাকাসদর Dhaka Sadar",
+              "thanas": [
+                "চকবাজার Chawkbazar",
+                "লালবাগ Lalbagh",
+                "কোতোয়ালি Kotwali",
+                "সূত্রাপুর Sutrapur",
+                "হাজারীবাগ Hazaribagh",
+                "রমনা Ramna",
+                "মতিঝিল Motijheel",
+                "পল্টন Paltan",
+                "ধানমণ্ডি Dhanmondi",
+                "মোহাম্মদপুর Mohammadpur",
+                "তেজগাঁও Tejgaon",
+                "গুলশান Gulshan",
+                "মিরপুর Mirpur",
+                "আদাবর Adabor",
+                "বনানী Banani",
+                "বংশাল Banshal",
+                "বিমানবন্দর Airport",
+                "বাসাবো Basabo",
+                "বসুন্ধরা Basundhara (Proposed)",
+                "কদমতলী Kadamtali",
+                "ক্যান্টনমেন্ট Cantonment",
+                "কলাবাগান Kalabagan",
+                "গেন্ডারিয়া Gendaria",
+                "দারুসসালাম Darus Salam",
+                "দক্ষিণখান Dakshin Khan",
+                "নিউমার্কেট New Market",
+                "মুগদা Mugda",
+                "রামপুরা Rampura",
+                "রূপনগর Rupnagar",
+                "শাহবাগ Shahbagh",
+                "শাহজাহানপুর Shahjahanpur",
+                "শের-ই-বাংলা,নগর Sher-e-Bangla Nagar",
+                "তেজগাঁও,শিল্পাঞ্চল Tejgaon Industrial Area",
+                "উত্তরা-পূর্ব Uttara East",
+                "উত্তরা-পশ্চিম Uttara West",
+                "উত্তর-খান Uttar Khan",
+                "ওয়ারী Wari",
+                "যাত্রাবাড়ী Jatrabari",
+                "ভাটারা Vatara",
+                "পল্লবী Pallabi",
+                "শাহ-আলী Shah Ali",
+                "তুরাগ Turag",
+                "খিলক্ষেত Khilkhet",
+                "সবুজবাগ Sabujbagh",
+                "ঢাকা-ক্যান্টনমেন্ট Dhaka Cantonment",
+                "ডেমরা Demra",
+                "শ্যামপুর Shyampur",
+                "বাড্ডা Badda",
+                "কাফরুল Kafrul",
+                "কামরাঙ্গীরচর Kamrangir Char",
+                "খিলগাঁও Khilgaon",
+                "উত্তরা Uttara",
+                "দোহার Dohar",
+                "নবাবগঞ্জ Nawabganj",
+                "কেরানীগঞ্জ Keraniganj",
+                "কেরানীগঞ্জ-মডেল Keraniganj Model",
+                "সাভার Savar",
+                "আশুলিয়া Ashulia",
+                "ধামরাই Dhamrai"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "ফরিদপুর Faridpur",
+          "upazilas": [
+            {
+              "name": "ফরিদপুর-সদর Faridpur Sadar",
+              "thanas": [
+                "ফরিদপুর-সদর Faridpur Sadar",
+                "কোতোয়ালী Kotwali",
+                "মধুখালী Madhukhali",
+                "বোয়ালমারী Boalmari",
+                "আলফাডাংগা Alfadanga",
+                "নগরকান্দা Nagarkanda",
+                "ভাঙ্গা Bhanga",
+                "সদরপুর Sadarpur",
+                "চরভদ্রাসন Charbhadrasan",
+                "সালথা Salta"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "গাজীপুর Gazipur",
+          "upazilas": [
+            {
+              "name": "গাজীপুর-সদর Gazipur Sadar",
+              "thanas": [
+                "গাজীপুর-সদর Gazipur Sadar",
+                "সদর Sadar",
+                "বাসন Basan",
+                "কোনাবাড়ী Konabari",
+                "কাশিমপুর Kashimpur",
+                "গাছা Gacha",
+                "পূবাইল Pubail",
+                "টঙ্গী-পূর্ব Tongi East",
+                "টঙ্গী-পশ্চিম Tongi West",
+                "কালিয়াকৈর Kaliakoir",
+                "শ্রীপুর Sreepur",
+                "কাপাসিয়া Kapasia",
+                "কালীগঞ্জ Kaliganj"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "গোপালগঞ্জ Gopalganj",
+          "upazilas": [
+            {
+              "name": "গোপালগঞ্জ-সদর Gopalganj Sadar",
+              "thanas": [
+                "গোপালগঞ্জ-সদর-থানা Gopalganj Sadar Thana",
+                "টুঙ্গীপাড়া-থানা Tungipara Thana",
+                "কোটালীপাড়া-থানা Kotalipara Thana",
+                "কাশিয়ানী-থানা Kashiani Thana",
+                "মুকসুদপুর-থানা Muksudpur Thana"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "কিশোরগঞ্জ Kishoreganj",
+          "upazilas": [
+            {
+              "name": "কিশোরগঞ্জ-সদর Kishoreganj Sadar",
+              "thanas": [
+                "কিশোরগঞ্জ-সদর-থানা Kishoreganj Sadar Thana",
+                "হোসেনপুর-থানা Hossainpur Thana",
+                "পাকুন্দিয়া-থানা Pakundia Thana",
+                "কটিয়াদী-থানা Katiadi Thana",
+                "করিমগঞ্জ-থানা Karimganj Thana",
+                "তাড়াইল-থানা Tarail Thana",
+                "ইটনা-থানা Itna Thana",
+                "মিঠামইন-থানা Mithamain Thana",
+                "অষ্টগ্রাম-থানা Austagram Thana",
+                "নিকলী-থানা Nikli Thana",
+                "বাজিতপুর-থানা Bajitpur Thana",
+                "কুলিয়ারচর-থানা Kuliarchar Thana",
+                "ভৈরব-থানা Bhairab Thana"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "মাদারীপুর Madaripur",
+          "upazilas": [
+            {
+              "name": "মাদারীপুর-সদর Madaripur Sadar",
+              "thanas": [
+                "মাদারীপুর-সদর-থানা Madaripur Sadar Thana",
+                "কালকিনি-থানা Kalkini Thana",
+                "রাজৈর-থানা Rajoir Thana",
+                "শিবচর-থানা Shibchar Thana",
+                "ডাসার-থানা Dasar Thana"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "মানিকগঞ্জ Manikganj",
+          "upazilas": [
+            {
+              "name": "মানিকগঞ্জ-সদর Manikganj Sadar",
+              "thanas": [
+                "মানিকগঞ্জ-সদর-থানা Manikganj Sadar Thana",
+                "শিবালয়-থানা Shibaloy Thana",
+                "ঘিওর-থানা Ghior Thana",
+                "দৌলতপুর-থানা Daulatpur Thana",
+                "সাটুরিয়া-থানা Saturia Thana",
+                "সিংগাইর-থানা Singair Thana",
+                "হরিরামপুর-থানা Harirampur Thana"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "মুন্সীগঞ্জ Munshiganj",
+          "upazilas": [
+            {
+              "name": "মুন্সীগঞ্জ-সদর Munshiganj Sadar",
+              "thanas": [
+                "মুন্সীগঞ্জ-সদর-থানা Munshiganj Sadar Thana",
+                "শ্রীনগর-থানা Sreenagar Thana",
+                "গজারিয়া-থানা Gazaria Thana",
+                "টঙ্গীবাড়ি-থানা Tongibari Thana",
+                "সিরাজদিখান-থানা Sirajdikhan Thana",
+                "লোহজং-থানা Lohajang Thana"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "নারায়ণগঞ্জ Narayanganj",
+          "upazilas": [
+            {
+              "name": "নারায়ণগঞ্জ-সদর Narayanganj Sadar",
+              "thanas": [
+                "নারায়ণগঞ্জ-সদর Narayanganj Sadar",
+                "ফতুল্লা-থানা Fatullah Thana",
+                "সিদ্ধিরগঞ্জ-থানা Siddhirganj Thana",
+                "বন্দর-থানা Bandar Thana",
+                "আড়াইহাজার-থানা Araihazar Thana",
+                "রূপগঞ্জ-থানা Rupganj Thana",
+                "সোনারগাঁও-থানা Sonargaon Thana"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "নরসিংদী Narsingdi",
+          "upazilas": [
+            {
+              "name": "নরসিংদী-সদর Narsingdi Sadar",
+              "thanas": [
+                "নরসিংদী-মডেল-থানা Narsingdi Model Thana",
+                "পলাশ-থানা Palash Thana",
+                "মাধবদী-থানা Madhabdi Thana",
+                "শিবপুর-মডেল-থানা Shibpur Model Thana",
+                "মনোহরদী-থানা Monohardi Thana",
+                "রায়পুরা-থানা Raipura Thana",
+                "বেলাব-থানা Belabo Thana"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "রাজবাড়ী Rajbari",
+          "upazilas": [
+            {
+              "name": "রাজবাড়ী-সদর Rajbari Sadar",
+              "thanas": [
+                "রাজবাড়ী-সদর-থানা Rajbari Sadar Thana",
+                "গোয়ালন্দঘাট-থানা Goalanda Ghat Thana",
+                "বালিয়াকান্দি-থানা Baliakandi Thana",
+                "পাংশা-মডেল-থানা Pangsha Model Thana",
+                "কালুখালী-থানা Kalukhali Thana"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "শরীয়তপুর Shariatpur",
+          "upazilas": [
+            {
+              "name": "শরীয়তপুর-সদর Shariatpur Sadar",
+              "thanas": [
+                "জাজির-ক্যান্টনমেন্ট-থানা Jajira Cantonment Thana",
+                "জাজিরা-থানা Jajira Thana",
+                "নড়িয়া-থানা Naria Thana",
+                "সখীপুর-থানা Sakhipur Thana",
+                "পালংবাড়ি-সদর-থানা Palongbari Sadar Thana",
+                "ডামুড্যা-থানা Damudya Thana",
+                "ভেদরগঞ্জ-থানা Vederganj Thana",
+                "গোসাইরহাট-থানা Gosairhat Thana"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "টাঙ্গাইল Tangail",
+          "upazilas": [
+            {
+              "name": "টাঙ্গাইল-সদর Tangail Sadar",
+              "thanas": [
+                "টাঙ্গাইল-সদর-থানা Tangail Sadar Thana",
+                "নাগরপুর-থানা Nagarpur Thana",
+                "দেলদুয়ার-থানা Delduar Thana",
+                "মির্জাপুর-থানা Mirzapur Thana",
+                "বাসাইল-থানা Basail Thana",
+                "সখীপুর-থানা Sakhipur Thana",
+                "কালিহাতী-থানা Kalihati Thana",
+                "ঘাটাইল-থানা Ghatail Thana",
+                "ভূঞাপুর-থানা Bhuapur Thana",
+                "ধনবাড়ী-থানা Dhanbari Thana",
+                "মধুপুর-থানা Madhupur Thana",
+                "গোপালপুর-থানা Gopalpur Thana",
+                "বঙ্গবন্ধু-সেতু-পূর্ব-থানা Bangabandhu Setu Purbo Thana"
+              ]
+            }
+          ]
+        }
+
+       
+      ]
+    },
+
+    {
+      "name": "চট্টগ্রাম Chattogram",
+      "districts": [
+        {
+          "name": "চট্টগ্রাম Chattogram",
+          "upazilas": [
+            {
+              "name": "চট্টগ্রাম-সদর Chattogram Sadar",
+              "thanas": [
+                "মীরসরাই Thana Mirsarai",
+            "সীতাকুন্ড Thana Sitakunda",
+            "সন্দ্বীপ Thana Sandwip",
+            "রাউজান Thana Raozan",
+            "রাঙ্গুনিয়া Thana Rangunia",
+            "ফটিকছড়ি Thana Fatikchhari",
+            "ভুজপুর Thana Bhujpur",
+            "হাটহাজারী Thana Hathazari",
+            "পটিয়া Thana Patiya",
+            "আনোয়ারা Thana Anwara",
+            "চন্দনাইশ Thana Chandanaish",
+            "বোয়ালখালী Thana Boalkhali",
+            "বাঁশখালী Thana Banshkhali",
+            "লোহাগাড়া Thana Lohagara",
+            "সাতকানিয়া Thana Satkania",
+            "জোরারগঞ্জ Thana Jorarganj",
+            "বাকলিয়া Thana Bakalia",
+            "বায়েজিদ Thana Bayezid",
+            "পাহাড়তলী Thana Pahartali",
+            "পাঁচলাইশ Thana Panchlaish",
+            "পতেঙ্গা Thana Patenga",
+            "চান্দগাঁও Thana Chandgaon",
+            "বন্দর Thana Bandar",
+            "ডবলমুরিং Thana Double Mooring",
+            "হালিশহর Thana Halishahar",
+            "কর্ণফুলী Thana Karnaphuli",
+            "খুলশী Thana Khulshi",
+            "কোতোয়ালি Thana Kotwali",
+            "আকবরশাহ Thana Akbarshah",
+            "চকবাজার Thana Chawkbazar",
+            "সদরঘাট Thana Sadarghat",
+            "ইপিজেড Thana EPZ"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "কক্সবাজার Cox’s Bazar",
+          "upazilas": [
+            {
+              "name": "কক্সবাজার-সদর Cox’s Bazar Sadar",
+              "thanas": [
+                "কক্সবাজার-সদর Thana Cox’s Bazar Sadar",
+                "চকরিয়া Thana Chakaria",
+                "কুতুবদিয়া Thana Kutubdia",
+                "উখিয়া Thana Ukhiya",
+                "মহেশখালী Thana Maheshkhali",
+                "পেকুয়া Thana Pekua",
+                "রামু Thana Ramu",
+                "টেকনাফ Thana Teknaf",
+                "ঈদগা Thana Eidgaon"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "বান্দরবান Bandarban",
+          "upazilas": [
+            {
+              "name": "বান্দরবান-সদর Bandarban Sadar",
+              "thanas": [
+                "বান্দরবান-সদর Thana Bandarban Sadar",
+                "রোয়াংছড়ি Thana Ruma",
+                "নাইক্ষ্যংছড়ি Thana Naikhongchhari",
+                "লামা Thana Lama",
+                "রুমা Thana Ruma",
+                "আলীকদম Thana Alikadam",
+                "থানচি Thana Thanchi"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "রাঙ্গামাটি Rangamati",
+          "upazilas": [
+            {
+              "name": "রাঙ্গামাটি-সদর Rangamati Sadar",
+              "thanas": [
+                "সদর-থানা Sadar Thana",
+                "কাউখালী-থানা KaukhalI Thana",
+                "নানিয়ারচর-থানা Naniarchar Thana",
+                "কাপ্তাই-থানা Kaptai Thana",
+                "চন্দ্রঘোনা-থানা Chandraghona Thana",
+                "রাজস্থলী-থানা Rajasthali Thana",
+                "বিলাইছড়ি-থানা Bilaichhari Thana",
+                "লংগদু-থানা Longadu Thana",
+                "বরকল-থানা Barkal Thana",
+                "জরাছুড়ি-থানা Jarachuri Thana",
+                "বাঘাইছড়ি-থানা Baghaichhari Thana",
+                "সাজেক-থানা Sajek Thana"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "খাগড়াছড়ি Khagrachari",
+          "upazilas": [
+            {
+              "name": "খাগড়াছড়ি-সদর Khagrachari Sadar",
+              "thanas": [
+                "খাগড়াছড়ি-সদর Khagrachari Sadar",
+                "দীঘিনালা Dighinala",
+                "পানছড়ি Panchhari",
+                "মাটিরাঙ্গা Matiranga",
+                "গুইমারা Guimara",
+                "মানিকছড়ি Manikchhari",
+                "মহালছড়ি Mahalchhari",
+                "লক্ষীছড়ি Laxmichhari",
+                "রামগড় Ramgarh"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "ফেনী Feni",
+          "upazilas": [
+            {
+              "name": "ফেনী-সদর Feni Sadar",
+              "thanas": [
+                "ফেনী-সদর-থানা Feni Sadar Thana",
+                "সোনাগাজী-থানা Sonagazi Thana",
+                "দাগনভূইয়া-থানা Daganbhuiyan Thana",
+                "পরশুরাম-মডেলথানা Parshuram Model Thana",
+                "ছাগলনাইয়া-থানা Chhagalnaiya Thana",
+                "ফুলগাজী-থানা Fulgazi Thana"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "নোয়াখালী Noakhali",
+          "upazilas": [
+            {
+              "name": "নোয়াখালী-সদর Noakhali Sadar",
+              "thanas": [
+                "সুধারাম-মডেল-থানা Sudharam Model Thana",
+                "বেগমগঞ্জ-থানা Begumganj Thana",
+                "কোম্পানীগঞ্জ-থানা Companiganj Thana",
+                "কবিরহাট-থানা Kabirhat Thana",
+                "চরজব্বার-থানা Char Jabbar Thana",
+                "হাতিয়া-থানা Hatia Thana",
+                "চাটখিল-থানা Chatkhil Thana",
+                "সেনবাগ-থানা Senbagh Thana",
+                "সোনাইমড়ী-থানা Sonaimuri Thana",
+                "ভাসানচর-থানা Bhasanchar Thana"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "লক্ষ্মীপুর Laxmipur",
+          "upazilas": [
+            {
+              "name": "লক্ষ্মীপুর-সদর Laxmipur Sadar",
+              "thanas": [
+                "লক্ষ্মীপুর-সদর Laxmipur Sadar",
+                "রায়পুর Raipur",
+                "রামগতি Ramgati",
+                "রামগঞ্জ Ramganj",
+                "চন্দ্রগঞ্জ Chandraganj",
+                "কমলনগর Kamalnagar"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "চাঁদপুর Chandpur",
+          "upazilas": [
+            {
+              "name": "চাঁদপুর-সদর Chandpur Sadar",
+              "thanas": [
+                "সদর-মডেল-থানা Sadar Model Thana",
+                "হাইমচর-থানা Haimchar Thana",
+                "ফরিদগঞ্জ-থানা Faridganj Thana",
+                "হাজীগঞ্জ-থানা Hajiganj Thana",
+                "মতলব-উত্তর-থানা Matlab Uttar Thana",
+                "মতলব-দক্ষিন-থানা Matlab Dokkhin Thana",
+                "কচুয়া-থানা Kachua Thana",
+                "শাহরাস্তি-থানা Shahrasti Thana"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "ব্রাহ্মণবাড়িয়া Brahmanbaria",
+          "upazilas": [
+            {
+              "name": "ব্রাহ্মণবাড়িয়া-সদর Brahmanbaria Sadar",
+              "thanas": [
+                "ব্রাহ্মণবাড়িয়া-সদর-মডেলথানা Brahmanbaria Sadar Model Thana",
+                "আশুগঞ্জ-থানা Ashuganj Thana",
+                "সরাইল-থানা Sarail Thana",
+                "নাসিরনগর-থানা Nasirnagar Thana",
+                "নবীনগর-থানা Nabinagar Thana",
+                "বাঞ্ছারামপুর-থানা Bancharampur Thana",
+                "আখাউড়া-থানা Akhaura Thana",
+                "বিজয়নগর-থানা Bijoynagar Thana"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "কুমিল্লা Comilla",
+          "upazilas": [
+            {
+              "name": "কুমিল্লা-সদর Comilla Sadar",
+              "thanas": [
+                "কুমিল্লা-সদর Comilla Sadar",
+                "সদর-দক্ষিণ Sadar Dokkhin",
+                "ব্রাহ্মণপাড়া Brahmanpara",
+                "চান্দিনা Chandina",
+                "চৌদ্দগ্রাম Chauddagram",
+                "তিতাস Titas",
+                "দাউদকান্দি Daudkandi",
+                "দেবিদ্বার Debidwar",
+                "নাঙ্গলকোট Nangalkot",
+                "বরুড়া Barura",
+                "বড়িু চং Boriu Chong",
+                "মনোহরগঞ্জ Monohorganj",
+                "বাঙ্গরাবাজার Bangra Bazar",
+                "মরাদনগর Muradnagar",
+                "মেঘনা Meghna",
+                "লাকসাম Laksam",
+                "লালমাই Lalmay",
+                "হোমনা Homna"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "বরিশাল Barishal",
+      "districts": [
+        {
+          "name": "বরিশাল Barishal",
+          "upazilas": [
+            {
+              "name": "বরিশাল-সদর Barishal Sadar",
+              "thanas": [
+                "বরিশাল-সদর Barishal Sadar",
+                "বাকেরগঞ্জ Bakerganj",
+                "গৌরনদী Gournadi",
+                "আগৈলঝাড়া Agailjhara",
+                "বানারীপাড়া Banaripara",
+                "মলাদী Muladi",
+                "মেহেন্দিগঞ্জ Mehendiganj",
+                "বাবুগঞ্জ Babuganj",
+                "উজিরপুর Uzirpur",
+                "হিজলা Hizla"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "বরগুনা Barguna",
+          "upazilas": [
+            {
+              "name": "বরগুনা-সদর Barguna Sadar",
+              "thanas": [
+                "বরগুনা-সদর Barguna Sadar",
+                "বেতাগী Betagi",
+                "বামনা Bamna",
+                "আমতলী Amtali",
+                "পাথরঘাটা Pathorghata",
+                "তালতলী Taltali"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "ভোলা Bhola",
+          "upazilas": [
+            {
+              "name": "ভোলা-সদর Bhola Sadar",
+              "thanas": [
+                "ভোলা-সদর Bhola Sadar",
+                "দৌলতখান Daulatkhan",
+                "লালমোহন Lalmohan",
+                "বোরহানউদ্দিন Borhanuddin",
+                "তজমুদ্দিন Tajumuddin",
+                "মনপুরা Monpura",
+                "শশীভূষণ Shashibhushan",
+                "চরফ্যাসন Charfassion",
+                "দলারহাট Dularhat",
+                "দক্ষিন আইচা Dakshin Aicha"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "ঝালকাঠি Jhalokathi",
+          "upazilas": [
+            {
+              "name": "ঝালকাঠি-সদর Jhalokathi Sadar",
+              "thanas": [
+                "ঝালকাঠি-সদর Jhalokathi Sadar",
+                "নলছিটি Nalchity",
+                "কাঠালিয়া Kathalia",
+                "রাজাপুর Rajapur"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "পটুয়াখালী Patuakhali",
+          "upazilas": [
+            {
+              "name": "পটুয়াখালী-সদর Patuakhali Sadar",
+              "thanas": [
+                "পটুয়াখালী-সদর Patuakhali Sadar",
+                "দমুকি Dumki",
+                "দশমিনা Dashmina",
+                "বাউফল Bauphal",
+                "মির্জাগঞ্জ Mirzaganj",
+                "গলাচিপা Galachipa",
+                "কলাপাড়া Kalapara",
+                "রাঙ্গাবালী Rangabali"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "পিরোজপুর Pirojpur",
+          "upazilas": [
+            {
+              "name": "পিরোজপুর-সদর Pirojpur Sadar",
+              "thanas": [
+                "পিরোজপুর-সদর Pirojpur Sadar",
+                "কাউখালী Kawkhali",
+                "ভান্ডারিয়া Bhandaria",
+                "মঠবাড়ীয়া Mathbaria",
+                "নেছারাবাদ Nesarabad",
+                "নাজিরপুর Nazirpur",
+                "ইন্দরকান Indurkani"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+    
+    
+  ]
+}
