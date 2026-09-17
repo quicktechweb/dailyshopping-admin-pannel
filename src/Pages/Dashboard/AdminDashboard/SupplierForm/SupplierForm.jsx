@@ -51,7 +51,7 @@ export default function SupplierForm() {
 
       const payload = { ...form, image: imageUrl };
 
-      await axios.post("http://localhost:5000/api/suppliers", payload);
+      await axios.post("https://dailyshopping-backend.onrender.com/api/suppliers", payload);
       alert("✅ Supplier added successfully!");
 
       // Reset form

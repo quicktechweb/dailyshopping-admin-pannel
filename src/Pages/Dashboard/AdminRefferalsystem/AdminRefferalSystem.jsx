@@ -18,7 +18,7 @@ export default function AdminReferralSystem() {
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState({ type: "", text: "" });
 
-  const API_BASE = "http://localhost:5000/api/refferalsystem/referral-settings";
+  const API_BASE = "https://dailyshopping-backend.onrender.com/api/refferalsystem/referral-settings";
 
   useEffect(() => {
     fetchSettings();

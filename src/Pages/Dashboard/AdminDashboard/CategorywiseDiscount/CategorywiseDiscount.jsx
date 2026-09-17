@@ -7,7 +7,7 @@ export default function CategoryWiseDiscount() {
 
   // Fetch All Products
   const fetchProducts = async () => {
-    const res = await axios.get("http://localhost:5000/api/products");
+    const res = await axios.get("https://dailyshopping-backend.onrender.com/api/products");
     setProducts(res.data);
   };
 
@@ -34,7 +34,7 @@ export default function CategoryWiseDiscount() {
     }
 
     try {
-      await axios.put("http://localhost:5000/api/products/updatediscount/category-discount", {
+      await axios.put("https://dailyshopping-backend.onrender.com/api/products/updatediscount/category-discount", {
         categoryName,
         discount: discountValue,
       });

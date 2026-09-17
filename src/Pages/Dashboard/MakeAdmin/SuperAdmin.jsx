@@ -14,7 +14,7 @@ const SuperAdmin = () => {
   // Fetch all roles
   const fetchRoles = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/roles");
+      const res = await axios.get("https://dailyshopping-backend.onrender.com/roles");
       setRoles(res.data.roles);
     } catch (err) {
       console.error(err);
@@ -25,7 +25,7 @@ const SuperAdmin = () => {
   // Fetch all users
   const fetchUsers = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/auth/alluser");
+      const res = await fetch("https://dailyshopping-backend.onrender.com/api/auth/alluser");
       const data = await res.json();
       if (data.success) setUsers(data.users);
     } catch (err) {
@@ -52,7 +52,7 @@ const SuperAdmin = () => {
   try {
     console.log("Sending update request with permissions:", newPermissions);
 
-    const res = await fetch(`http://localhost:5000/api/auth/update-user/${user._id}`, {
+    const res = await fetch(`https://dailyshopping-backend.onrender.com/api/auth/update-user/${user._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

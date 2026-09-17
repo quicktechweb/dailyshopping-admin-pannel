@@ -34,7 +34,7 @@ const ReferralDashboard = () => {
       if (!myReferralCode) return;
       setLoading(true);
       try {
-        const res = await axios.get("http://localhost:5000/api/auth/alluser");
+        const res = await axios.get("https://dailyshopping-backend.onrender.com/api/auth/alluser");
         if (res.data.success) {
           const myReferrals = res.data.users.filter(
             (u) => u.referralCode === myReferralCode

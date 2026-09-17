@@ -14,7 +14,7 @@ const AdminReferral = () => {
     const fetchReferrals = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("http://localhost:5000/api/auth/admin/referrals");
+        const res = await axios.get("https://dailyshopping-backend.onrender.com/api/auth/admin/referrals");
         if (res.data.success) {
           setData(res.data.referrals);
         }

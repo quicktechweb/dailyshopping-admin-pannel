@@ -16,7 +16,7 @@ const AdminNavbarCategory = () => {
   // Fetch categories
   const fetchCategories = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/categories");
+      const res = await axios.get("https://dailyshopping-backend.onrender.com/api/categories");
       setCategories(res.data || []);
     } catch (err) {
       console.error("Failed to fetch categories:", err);
@@ -26,7 +26,7 @@ const AdminNavbarCategory = () => {
   // Fetch saved navbar categories
   const fetchSavedData = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/navbarcategory");
+      const res = await axios.get("https://dailyshopping-backend.onrender.com/api/navbarcategory");
       setSavedData(res.data || []);
     } catch (err) {
       console.error("Failed to fetch navbar category data:", err);
@@ -61,7 +61,7 @@ const AdminNavbarCategory = () => {
   // Submit new selection
   const handleSubmit = async () => {
     try {
-      await axios.post("http://localhost:5000/api/navbarcategory/select", {
+      await axios.post("https://dailyshopping-backend.onrender.com/api/navbarcategory/select", {
         firstChoiceSelected,
         secondChoiceSelected,
       });
@@ -87,7 +87,7 @@ const AdminNavbarCategory = () => {
   const handleUpdate = async () => {
     try {
       await axios.put(
-        `http://localhost:5000/api/navbarcategory/update/${editingCategory._id}`,
+        `https://dailyshopping-backend.onrender.com/api/navbarcategory/update/${editingCategory._id}`,
         { categoryName: updatedName }
       );
       alert("✅ Category updated successfully!");
@@ -103,7 +103,7 @@ const AdminNavbarCategory = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("🗑 Are you sure you want to delete this category?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/navbarcategory/delete/${id}`);
+      await axios.delete(`https://dailyshopping-backend.onrender.com/api/navbarcategory/delete/${id}`);
       alert("✅ Deleted successfully!");
       fetchSavedData();
     } catch (err) {

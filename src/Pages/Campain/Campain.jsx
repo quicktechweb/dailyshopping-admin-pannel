@@ -6,7 +6,7 @@ export default function Campaigns() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/products/campaindata")
+    fetch("https://dailyshopping-backend.onrender.com/api/products/campaindata")
       .then(res => res.json())
       .then(data => {
         if (data.success) setCampaigns(data.campaigns);

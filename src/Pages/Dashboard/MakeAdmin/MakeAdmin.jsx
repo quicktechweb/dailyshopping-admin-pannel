@@ -7,7 +7,7 @@ const MakeAdmin = () => {
 
   // Fetch admin list
   useEffect(() => {
-    fetch(`http://localhost:5000/getadminlist`)
+    fetch(`https://dailyshopping-backend.onrender.com/getadminlist`)
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {
@@ -28,7 +28,7 @@ const MakeAdmin = () => {
     e.preventDefault();
     const user = { phoneNumber };
 
-    fetch(`http://localhost:5000/userLogin/admin`, {
+    fetch(`https://dailyshopping-backend.onrender.com/userLogin/admin`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -50,7 +50,7 @@ const MakeAdmin = () => {
   };
 
   const handleDeleteAdmin = (phoneNumber) => {
-    fetch(`http://localhost:5000/userLogin/admin/${phoneNumber}`, {
+    fetch(`https://dailyshopping-backend.onrender.com/userLogin/admin/${phoneNumber}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" }, // Ensure JSON communication
     })

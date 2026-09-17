@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaPlus, FaEdit, FaTrashAlt } from "react-icons/fa";
 
-const BASE_URL = "http://localhost:5000/api/popularcategory";
-const CATEGORY_URL = "http://localhost:5000/api/categories";
+const BASE_URL = "https://dailyshopping-backend.onrender.com/api/popularcategory";
+const CATEGORY_URL = "https://dailyshopping-backend.onrender.com/api/categories";
 
 // ✅ Upload to ImgBB
 const uploadToImgBB = async (file) => {
@@ -11,7 +11,7 @@ const uploadToImgBB = async (file) => {
     const form = new FormData();
     form.append("image", file);
 
-    const res = await fetch("http://localhost:5000/upload", {
+    const res = await fetch("https://dailyshopping-backend.onrender.com/upload", {
       method: "POST",
       body: form,
     });

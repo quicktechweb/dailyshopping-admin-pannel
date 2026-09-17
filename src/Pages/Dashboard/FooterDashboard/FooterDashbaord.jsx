@@ -15,7 +15,7 @@ const ImageUploadField = ({ value, onUploaded, placeholder }) => {
     setUploading(true);
     try {
       const res = await axios.post(
-        "http://localhost:5000/upload",
+        "https://dailyshopping-backend.onrender.com/upload",
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -85,7 +85,7 @@ const FooterDashboard = () => {
   // Fetch footer data
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/footer")
+      .get("https://dailyshopping-backend.onrender.com/api/footer")
       .then((res) => {
         const data = res.data.footer;
 
@@ -159,7 +159,7 @@ const FooterDashboard = () => {
   const handleSave = () => {
     setSaving(true);
     axios
-      .put(`http://localhost:5000/api/footer/${footer._id}`, footer)
+      .put(`https://dailyshopping-backend.onrender.com/api/footer/${footer._id}`, footer)
       .then(() => alert("Footer updated successfully!"))
       .catch((err) => console.log(err))
       .finally(() => setSaving(false));

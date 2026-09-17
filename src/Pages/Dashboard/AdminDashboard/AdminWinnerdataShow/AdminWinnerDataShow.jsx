@@ -12,7 +12,7 @@ const AdminWinnerDataShow = () => {
   const fetchWinners = async () => {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:5000/api/winners");
+      const res = await fetch("https://dailyshopping-backend.onrender.com/api/winners");
       const data = await res.json();
       if (data.success) setWinners(data.winners);
     } catch (err) {
@@ -49,7 +49,7 @@ const handlePageSizeChange = (e) => {
 
   // 🔹 Update winner status
   const updateWinnerStatus = async (winnerId, status) => {
-  const res = await fetch(`http://localhost:5000/api/winners/${winnerId}/status`, {
+  const res = await fetch(`https://dailyshopping-backend.onrender.com/api/winners/${winnerId}/status`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ status }),

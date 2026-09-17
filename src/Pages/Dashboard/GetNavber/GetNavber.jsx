@@ -12,7 +12,7 @@ const GetNavber = () => {
     async function fetchData() {
       try {
         const response = await fetch(
-          `http://localhost:5000/getnavber`
+          `https://dailyshopping-backend.onrender.com/getnavber`
         );
         const result = await response.json();
         setData(result);

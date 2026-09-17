@@ -15,12 +15,12 @@ export default function HomeBannerAdvertis() {
   }, []);
 
   const fetchBanner = async () => {
-    const { data } = await axios.get("http://localhost:5000/api/bannersadvertis");
+    const { data } = await axios.get("https://dailyshopping-backend.onrender.com/api/bannersadvertis");
     setBanner(data[0]);
   };
 
   const updateBanner = async (updated) => {
-    await axios.put(`http://localhost:5000/api/bannersadvertis/${banner._id}`, updated);
+    await axios.put(`https://dailyshopping-backend.onrender.com/api/bannersadvertis/${banner._id}`, updated);
     fetchBanner();
   };
 
@@ -35,7 +35,7 @@ export default function HomeBannerAdvertis() {
 
   try {
     const res = await axios.post(
-      "http://localhost:5000/upload",
+      "https://dailyshopping-backend.onrender.com/upload",
       formData,
       {
         headers: { "Content-Type": "multipart/form-data" },

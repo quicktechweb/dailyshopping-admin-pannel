@@ -13,7 +13,7 @@ export default function CampaignPage() {
 
   // Fetch campaigns
   useEffect(() => {
-    axios.get("http://localhost:5000/api/campaigns")
+    axios.get("https://dailyshopping-backend.onrender.com/api/campaigns")
       .then(res => setCampaigns(res.data))
       .catch(err => console.log(err));
   }, []);
@@ -25,7 +25,7 @@ export default function CampaignPage() {
     const formData = new FormData();
     formData.append("image", file);
 
-    const res = await axios.post("http://localhost:5000/upload", formData, {
+    const res = await axios.post("https://dailyshopping-backend.onrender.com/upload", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
 
@@ -60,7 +60,7 @@ export default function CampaignPage() {
       if (editId) {
         // UPDATE CAMPAIGN
         res = await axios.put(
-          `http://localhost:5000/api/campaigns/${editId}`,
+          `https://dailyshopping-backend.onrender.com/api/campaigns/${editId}`,
           body
         );
 
@@ -71,7 +71,7 @@ export default function CampaignPage() {
 
       } else {
         // ADD NEW CAMPAIGN
-        res = await axios.post("http://localhost:5000/api/campaigns", body);
+        res = await axios.post("https://dailyshopping-backend.onrender.com/api/campaigns", body);
         setCampaigns([...campaigns, res.data]);
       }
 
@@ -102,7 +102,7 @@ export default function CampaignPage() {
   const handleDelete = async (id) => {
     if (!confirm("Are you sure to delete?")) return;
 
-    await axios.delete(`http://localhost:5000/api/campaigns/${id}`);
+    await axios.delete(`https://dailyshopping-backend.onrender.com/api/campaigns/${id}`);
     setCampaigns(campaigns.filter((c) => c._id !== id));
   };
 

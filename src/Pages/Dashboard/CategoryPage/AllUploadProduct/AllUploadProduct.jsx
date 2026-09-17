@@ -14,7 +14,7 @@ const AllUploadProduct = () => {
    const [brands, setBrands] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(""); 
-    //  const image_upload_api = `http://localhost:5000/upload`;
+    //  const image_upload_api = `https://dailyshopping-backend.onrender.com/upload`;
 const [campaigns, setCampaigns] = useState([]); // All campaigns from API
   const [selectedCampaign, setSelectedCampaign] = useState(""); // Selected campaign for dropdown
   const [campaignName, setCampaignName] = useState(""); 
@@ -57,7 +57,7 @@ const uploadImage = async (file) => {
   formData.append("image", file);
 
   try {
-    const res = await fetch("http://localhost:5000/upload", {
+    const res = await fetch("https://dailyshopping-backend.onrender.com/upload", {
       method: "POST",
       body: formData,
     });
@@ -89,7 +89,7 @@ const handleAddCategory = async () => {
     let imgUrl = "";
     if (categoryImgFile) imgUrl = await uploadImage(categoryImgFile);
 
-    const res = await fetch("http://localhost:5000/api/categories", {
+    const res = await fetch("https://dailyshopping-backend.onrender.com/api/categories", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -117,7 +117,7 @@ const handleAddSubcategory = async () => {
     let imgUrl = "";
     if (subImageFile) imgUrl = await uploadImage(subImageFile);
 
-    const res = await fetch("http://localhost:5000/api/subcategories", {
+    const res = await fetch("https://dailyshopping-backend.onrender.com/api/subcategories", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -147,7 +147,7 @@ const handleAddChildcategory = async () => {
     let imgUrl = "";
     if (childImageFile) imgUrl = await uploadImage(childImageFile);
 
-    const res = await fetch("http://localhost:5000/api/childcategories", {
+    const res = await fetch("https://dailyshopping-backend.onrender.com/api/childcategories", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -179,7 +179,7 @@ const handleAddBrand = async () => {
       brandImgUrl = await uploadImage(brandImgFile);
     }
 
-    const res = await fetch("http://localhost:5000/api/brands", {
+    const res = await fetch("https://dailyshopping-backend.onrender.com/api/brands", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -252,10 +252,10 @@ const handleAddBrand = async () => {
   const [form, setForm] = useState(emptyForm);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/categories").then((r) => setCategories(r.data));
-    axios.get("http://localhost:5000/api/subcategories").then((r) => setSubcategories(r.data));
-    axios.get("http://localhost:5000/api/childcategories").then((r) => setChildcategories(r.data));
-    axios.get("http://localhost:5000/api/brands").then((r) => setBrands(r.data));
+    axios.get("https://dailyshopping-backend.onrender.com/api/categories").then((r) => setCategories(r.data));
+    axios.get("https://dailyshopping-backend.onrender.com/api/subcategories").then((r) => setSubcategories(r.data));
+    axios.get("https://dailyshopping-backend.onrender.com/api/childcategories").then((r) => setChildcategories(r.data));
+    axios.get("https://dailyshopping-backend.onrender.com/api/brands").then((r) => setBrands(r.data));
     fetchProducts();
   }, []);
 
@@ -318,7 +318,7 @@ useEffect(() => {
 
 
   const fetchProducts = async () => {
-    const res = await axios.get("http://localhost:5000/api/products");
+    const res = await axios.get("https://dailyshopping-backend.onrender.com/api/products");
     setProducts(res.data);
   };
 
@@ -365,7 +365,7 @@ useEffect(() => {
         formData.append("image", file);
 
         const res = await axios.post(
-          "http://localhost:5000/upload",
+          "https://dailyshopping-backend.onrender.com/upload",
           formData,
           { headers: { "Content-Type": "multipart/form-data" } }
         );
@@ -390,13 +390,13 @@ useEffect(() => {
 
     if (editingProduct) {
       await axios.put(
-        `http://localhost:5000/api/products/${editingProduct._id}`,
+        `https://dailyshopping-backend.onrender.com/api/products/${editingProduct._id}`,
         productData
       );
       setEditingProduct(null);
     } else {
       await axios.post(
-        "http://localhost:5000/api/products",
+        "https://dailyshopping-backend.onrender.com/api/products",
         productData
       );
     }
@@ -472,7 +472,7 @@ useEffect(() => {
   useEffect(() => {
   const fetchCampaigns = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/campaigns");
+      const res = await axios.get("https://dailyshopping-backend.onrender.com/api/campaigns");
       setCampaigns(res.data); // populate campaigns state
     } catch (err) {
       console.error("Error fetching campaigns:", err);
@@ -485,7 +485,7 @@ useEffect(() => {
 
   const handleDelete = async (id) => {
     if (window.confirm("Delete this product?")) {
-      await axios.delete(`http://localhost:5000/api/products/${id}`);
+      await axios.delete(`https://dailyshopping-backend.onrender.com/api/products/${id}`);
       fetchProducts();
     }
   };

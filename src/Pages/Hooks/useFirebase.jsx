@@ -65,7 +65,7 @@ const useFirebase = () => {
 
   //       if (currentToken) {
   //         await axios.post(
-  //           "http://localhost:5000/api/notification/save-token",
+  //           "https://dailyshopping-backend.onrender.com/api/notification/save-token",
   //           { userId: user._id, fcmToken: currentToken }
   //         );
   //       }
@@ -102,7 +102,7 @@ const googleSignIn = async (navigate) => {
     };
 
     const { data } = await axios.post(
-      "http://localhost:5000/api/auth/google-register",
+      "https://dailyshopping-backend.onrender.com/api/auth/google-register",
       userData,
       { headers: { "Content-Type": "application/json" } }
     );
@@ -148,7 +148,7 @@ const googleSignIn = async (navigate) => {
  const loginWithPhoneAndPass = async (identifier, password, navigate, location) => {
   setIsLoading(true);
   try {
-    const { data } = await axios.post("http://localhost:5000/api/auth/login", {
+    const { data } = await axios.post("https://dailyshopping-backend.onrender.com/api/auth/login", {
       identifier,   // ✅ backend will match this
       password,
     });
@@ -181,7 +181,7 @@ const googleSignIn = async (navigate) => {
 const loginWithPhoneAndPassadmin = async (phone, password, navigate) => {
   try {
     const { data } = await axios.post(
-      "http://localhost:5000/api/auth/admin-login",
+      "https://dailyshopping-backend.onrender.com/api/auth/admin-login",
       {
         identifier: phone,
         password,

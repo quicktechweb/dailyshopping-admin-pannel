@@ -20,7 +20,7 @@ const Dashboard = () => {
     const stored = JSON.parse(localStorage.getItem("user") || "null");
     if (!stored?._id) return;
     axios
-      .get(`http://localhost:5000/api/auth/me/${stored._id}`)
+      .get(`https://dailyshopping-backend.onrender.com/api/auth/me/${stored._id}`)
       .then((res) => {
         const u = res.data.user;
         setUser(u);

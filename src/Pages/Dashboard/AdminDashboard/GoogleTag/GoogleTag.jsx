@@ -11,7 +11,7 @@ export default function GoogleTagAdmin() {
   useEffect(() => {
     const fetchGtm = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/settings/gtm");
+        const res = await axios.get("https://dailyshopping-backend.onrender.com/api/settings/gtm");
         if (res.data && res.data.gtmId) {
           setGtmId(res.data.gtmId);
           setSavedGtmId(res.data.gtmId);
@@ -33,7 +33,7 @@ export default function GoogleTagAdmin() {
 
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/settings/gtm", { gtmId });
+      const res = await axios.post("https://dailyshopping-backend.onrender.com/api/settings/gtm", { gtmId });
       setSavedGtmId(res.data.gtm.gtmId); // Update savedGtmId
       setMessage("GTM ID saved successfully!");
     } catch (err) {

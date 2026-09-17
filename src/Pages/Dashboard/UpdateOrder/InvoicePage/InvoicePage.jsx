@@ -10,7 +10,7 @@ const InvoicePage = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/orders/${paymentId}`)
+      .get(`https://dailyshopping-backend.onrender.com/api/orders/${paymentId}`)
       .then((res) => setOrder(res.data))
       .catch((err) => console.error(err));
   }, [paymentId]);

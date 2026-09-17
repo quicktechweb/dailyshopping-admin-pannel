@@ -9,7 +9,7 @@ export default function CarouselManager() {
   const [form, setForm] = useState({ title: "", buttonText: "", img1: "" });
   const [uploading, setUploading] = useState(false);
   const fetchCarousel = async () => {
-    const res = await axios.get("http://localhost:5000/api/carousel");
+    const res = await axios.get("https://dailyshopping-backend.onrender.com/api/carousel");
     setCarouselData(res.data);
   };
 
@@ -59,7 +59,7 @@ export default function CarouselManager() {
 
   try {
     const res = await axios.post(
-      "http://localhost:5000/upload",
+      "https://dailyshopping-backend.onrender.com/upload",
       formData,
       {
         headers: { "Content-Type": "multipart/form-data" },
@@ -97,7 +97,7 @@ export default function CarouselManager() {
 
 
   const handleSave = async (id) => {
-    await axios.put(`http://localhost:5000/api/carousel/${id}`, form);
+    await axios.put(`https://dailyshopping-backend.onrender.com/api/carousel/${id}`, form);
     setEditing(null);
     fetchCarousel();
   };

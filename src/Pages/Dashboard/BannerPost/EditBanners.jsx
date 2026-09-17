@@ -19,7 +19,7 @@ const EditBanners = () => {
 
   // Fetch banner data
   useEffect(() => {
-    fetch(`http://localhost:5000/editbaners/${id}`)
+    fetch(`https://dailyshopping-backend.onrender.com/editbaners/${id}`)
       .then((res) => res.json())
       .then((data) => setBanner(data))
       .catch((error) => console.error("Error fetching banner:", error));
@@ -78,7 +78,7 @@ const EditBanners = () => {
     }
 
     // Send the updated data to the server
-    fetch(`http://localhost:5000/bannerdataupdate/${id}`, {
+    fetch(`https://dailyshopping-backend.onrender.com/bannerdataupdate/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedBanner),

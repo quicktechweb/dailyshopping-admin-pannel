@@ -39,7 +39,7 @@ const CouponModal = ({ open, onClose, product }) => {
     };
 
     const res = await axios.post(
-      "http://localhost:5000/api/coupons/walletcoupon", // <-- use POST
+      "https://dailyshopping-backend.onrender.com/api/coupons/walletcoupon", // <-- use POST
       payload // <-- send as body
     );
 
@@ -86,7 +86,7 @@ const CouponModal = ({ open, onClose, product }) => {
       };
 
       const res = await axios.post(
-        "http://localhost:5000/api/coupons/purchase",
+        "https://dailyshopping-backend.onrender.com/api/coupons/purchase",
         payload
       );
 

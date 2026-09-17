@@ -11,7 +11,7 @@ export default function PixelTracker() {
   useEffect(() => {
     const fetchPixel = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/pixel");
+        const res = await axios.get("https://dailyshopping-backend.onrender.com/api/pixel");
         if (res.data && res.data.pixelId) {
           setPixelId(res.data.pixelId);
         }

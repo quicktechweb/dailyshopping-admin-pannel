@@ -14,8 +14,8 @@ export default function AdminSellerCommission() {
     setLoading(true);
     try {
       const [earningsRes, detailsRes] = await Promise.all([
-        axios.get("http://localhost:5000/api/wallet/admin/earnings"),
-        axios.get("http://localhost:5000/api/wallet/admin/commission-details"),
+        axios.get("https://dailyshopping-backend.onrender.com/api/wallet/admin/earnings"),
+        axios.get("https://dailyshopping-backend.onrender.com/api/wallet/admin/commission-details"),
       ]);
 
       setTotals({

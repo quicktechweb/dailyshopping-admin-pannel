@@ -11,7 +11,7 @@ const GetFooter = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiUrl = `http://localhost:5000/api/footer`;
+        const apiUrl = `https://dailyshopping-backend.onrender.com/api/footer`;
         console.log("Fetching from:", apiUrl);
 
         const response = await fetch(apiUrl);

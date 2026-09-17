@@ -10,7 +10,7 @@ const AllCouponDataShow = () => {
   const fetchCoupons = async () => {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:5000/api/coupons");
+      const res = await fetch("https://dailyshopping-backend.onrender.com/api/coupons");
       const data = await res.json();
       if (data.success) setCoupons(data.coupons);
     } catch (err) {
@@ -23,7 +23,7 @@ const AllCouponDataShow = () => {
   // --- Fetch all winners ---
  const fetchWinners = async () => {
   try {
-    const res = await fetch("http://localhost:5000/api/coupons/winners");
+    const res = await fetch("https://dailyshopping-backend.onrender.com/api/coupons/winners");
     const data = await res.json();
     if (data.success) {
       const winnerMap = {};

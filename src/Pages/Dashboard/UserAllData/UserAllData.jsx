@@ -24,7 +24,7 @@ const UserAllData = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/auth/alluser`);
+      const res = await fetch(`https://dailyshopping-backend.onrender.com/api/auth/alluser`);
       const data = await res.json();
       if (data.success) {
         setUsers(data.users);
@@ -40,7 +40,7 @@ const UserAllData = () => {
 
   const fetchOrders = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/orders`);
+      const res = await fetch(`https://dailyshopping-backend.onrender.com/api/orders`);
       const data = await res.json();
       setAllOrders(data);
     } catch (err) {
@@ -85,7 +85,7 @@ const UserAllData = () => {
   setLoading(true);
   try {
     const res = await fetch(
-      `http://localhost:5000/api/auth/blockuser/${user.phoneNumber}`,
+      `https://dailyshopping-backend.onrender.com/api/auth/blockuser/${user.phoneNumber}`,
       { method: "PATCH" }
     );
     const data = await res.json();
@@ -109,7 +109,7 @@ const UserAllData = () => {
     setLoading(true);
     try {
       const res = await fetch(
-        `http://localhost:5000/api/auth/unblockuser/${phoneNumber}`,
+        `https://dailyshopping-backend.onrender.com/api/auth/unblockuser/${phoneNumber}`,
         { method: "PATCH" }
       );
       const data = await res.json();

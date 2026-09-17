@@ -13,7 +13,7 @@ const ShippingPolicyAdmin = () => {
   // ✅ Fetch data from MongoDB
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/shippingpolicy");
+      const res = await axios.get("https://dailyshopping-backend.onrender.com/api/shippingpolicy");
       setData(res.data.data); // correct depth
     } catch (err) {
       console.error("Error fetching shipping policy:", err);
@@ -33,7 +33,7 @@ const ShippingPolicyAdmin = () => {
   // ✅ Save updates
   const handleSave = async () => {
     try {
-      await axios.put(`http://localhost:5000/api/shippingpolicy/${data._id}`, data);
+      await axios.put(`https://dailyshopping-backend.onrender.com/api/shippingpolicy/${data._id}`, data);
       alert("Saved successfully!");
       setEditing(false);
       fetchData();

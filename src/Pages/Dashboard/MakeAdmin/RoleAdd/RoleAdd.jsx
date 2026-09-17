@@ -31,7 +31,7 @@ export default function RoleManager() {
 
   const fetchRoles = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/roles");
+      const res = await axios.get("https://dailyshopping-backend.onrender.com/roles");
       setRoles(res.data.roles);
     } catch (err) {
       Swal.fire("Error", "Failed to fetch roles", "error");
@@ -55,14 +55,14 @@ export default function RoleManager() {
     if (!roleName.trim()) return Swal.fire("Warning", "Role name cannot be empty", "warning");
     try {
       if (editingRole) {
-        const res = await axios.put(`http://localhost:5000/roles/${editingRole._id}`, {
+        const res = await axios.put(`https://dailyshopping-backend.onrender.com/roles/${editingRole._id}`, {
           name: roleName,
           permissions
         });
         setRoles(prev => prev.map(r => r._id === editingRole._id ? res.data.role : r));
         Swal.fire("Updated", "Role updated successfully", "success");
       } else {
-        const res = await axios.post("http://localhost:5000/roles", {
+        const res = await axios.post("https://dailyshopping-backend.onrender.com/roles", {
           name: roleName,
           permissions
         });
@@ -86,7 +86,7 @@ export default function RoleManager() {
       confirmButtonText: "Yes, delete it!"
     });
     if (confirm.isConfirmed) {
-      await axios.delete(`http://localhost:5000/roles/${id}`);
+      await axios.delete(`https://dailyshopping-backend.onrender.com/roles/${id}`);
       setRoles(prev => prev.filter(r => r._id !== id));
       Swal.fire("Deleted!", "Role has been deleted.", "success");
     }

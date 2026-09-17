@@ -8,7 +8,7 @@ export default function SupplierEdit() {
   const [form, setForm] = useState({});
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/suppliers/${id}`).then((res) => {
+    axios.get(`https://dailyshopping-backend.onrender.com/api/suppliers/${id}`).then((res) => {
       setForm(res.data);
     });
   }, [id]);
@@ -19,7 +19,7 @@ export default function SupplierEdit() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.put(`http://localhost:5000/api/suppliers/${id}`, form);
+    await axios.put(`https://dailyshopping-backend.onrender.com/api/suppliers/${id}`, form);
     navigate("/supplier");
   };
 

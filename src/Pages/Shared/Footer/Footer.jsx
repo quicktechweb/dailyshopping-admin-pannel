@@ -36,7 +36,7 @@ const Footer = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/footer")
+      .get("https://dailyshopping-backend.onrender.com/api/footer")
       .then((res) => {
         if (res.data.success && res.data.footer) {
           setFooterData(res.data.footer);

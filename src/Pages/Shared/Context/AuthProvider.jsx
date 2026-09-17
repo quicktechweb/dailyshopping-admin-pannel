@@ -25,7 +25,7 @@ const AuthProvider = ({ children }) => {
   const fetchLatestUser = async () => {
     if (!user?._id) return;
     try {
-      const res = await axios.get(`http://localhost:5000/api/auth/get-user/${user._id}`);
+      const res = await axios.get(`https://dailyshopping-backend.onrender.com/api/auth/get-user/${user._id}`);
       if (res.data.success) {
         updateUser(res.data.user); // update context + localStorage
       }

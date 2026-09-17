@@ -23,7 +23,7 @@ const uploadToImgBB = async (file) => {
     const formData = new FormData();
     formData.append("image", file);
 
-    const res = await fetch("http://localhost:5000/upload", {
+    const res = await fetch("https://dailyshopping-backend.onrender.com/upload", {
       method: "POST",
       body: formData,
     });
@@ -46,7 +46,7 @@ const uploadToImgBB = async (file) => {
     const stored = JSON.parse(localStorage.getItem("user") || "null");
     if (!stored?._id) return;
     axios
-      .get(`http://localhost:5000/api/auth/me/${stored._id}`)
+      .get(`https://dailyshopping-backend.onrender.com/api/auth/me/${stored._id}`)
       .then((res) => {
         const u = res.data.user;
         setUser(u);
@@ -85,7 +85,7 @@ const uploadToImgBB = async (file) => {
     };
 
     const res = await axios.put(
-      `http://localhost:5000/api/auth/update/${user._id}`,
+      `https://dailyshopping-backend.onrender.com/api/auth/update/${user._id}`,
       updatedData
     );
 

@@ -24,7 +24,7 @@ const Withdraw = () => {
   const fetchRequests = async () => {
     if (!user?._id) return;
     try {
-      const res = await axios.get(`http://localhost:5000/api/wallet/my-requests/${user._id}`);
+      const res = await axios.get(`https://dailyshopping-backend.onrender.com/api/wallet/my-requests/${user._id}`);
       setRequests(res.data.requests || []);
     } catch (err) {
       console.error(err);
@@ -47,7 +47,7 @@ const Withdraw = () => {
     setWithdrawing(true);
 
     // 1️⃣ Submit withdraw request
-    const res = await axios.post("http://localhost:5000/api/wallet/withdraw-requestdata", {
+    const res = await axios.post("https://dailyshopping-backend.onrender.com/api/wallet/withdraw-requestdata", {
       userId: user._id,
       amount: parseFloat(withdrawAmount),
       method: withdrawMethod,
@@ -73,7 +73,7 @@ const Withdraw = () => {
       };
 
       const notifRes = await axios.post(
-        "http://localhost:5000/api/notification/create",
+        "https://dailyshopping-backend.onrender.com/api/notification/create",
         notifPayload
       );
 

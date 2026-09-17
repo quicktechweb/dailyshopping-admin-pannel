@@ -13,7 +13,7 @@ export default function AdminSellerOrderList() {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        "http://localhost:5000/api/orders-seller-list"
+        "https://dailyshopping-backend.onrender.com/api/orders-seller-list"
       );
       setSellers(data?.sellers || []);
     } catch (err) {

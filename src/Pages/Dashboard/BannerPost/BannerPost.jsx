@@ -15,7 +15,7 @@ const BannerPost = () => {
     async function fetchData() {
       try {
         const response = await fetch(
-          `http://localhost:5000/getbannerdata`
+          `https://dailyshopping-backend.onrender.com/getbannerdata`
         );
         const result = await response.json();
         setData(result);
@@ -42,7 +42,7 @@ const BannerPost = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/bannerpartdelete/${id}`)
+          .delete(`https://dailyshopping-backend.onrender.com/bannerpartdelete/${id}`)
           .then((response) => {
             response.status === 204 &&
               Swal.fire("Deleted!", "Your file has been deleted.", "success");

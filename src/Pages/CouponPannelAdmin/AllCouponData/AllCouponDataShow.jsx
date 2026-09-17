@@ -20,7 +20,7 @@ const ITEMS_PER_PAGE = 16;
   const fetchCoupons = async () => {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:5000/api/coupons");
+      const res = await fetch("https://dailyshopping-backend.onrender.com/api/coupons");
       const data = await res.json();
       if (data.success) setCoupons(data.coupons);
     } catch (err) {
@@ -32,7 +32,7 @@ const ITEMS_PER_PAGE = 16;
 
   const sendWinnerNotification = async (winner) => {
   try {
-    const res = await axios.get("http://localhost:5000/api/auth/active-users");
+    const res = await axios.get("https://dailyshopping-backend.onrender.com/api/auth/active-users");
     const users = res.data.users || [];
 
     console.log("Total users found:", users.length);
@@ -45,7 +45,7 @@ const ITEMS_PER_PAGE = 16;
           user.email === winner.useremail ||
           user.phoneNumber === winner.userRegPhone;
 
-        await axios.post("http://localhost:5000/api/notification/create", {
+        await axios.post("https://dailyshopping-backend.onrender.com/api/notification/create", {
           userId: user._id, // always valid
           title: isWinner ? "🎉 Congratulations!" : "🏆 New Winner Announced!",
           message: isWinner
@@ -69,7 +69,7 @@ const ITEMS_PER_PAGE = 16;
 
   const fetchWinners = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/coupons/winners");
+      const res = await fetch("https://dailyshopping-backend.onrender.com/api/coupons/winners");
       const data = await res.json();
       if (!data.success) return;
 
@@ -167,7 +167,7 @@ const paginatedRounds = searchedRounds.slice(
   if (!confirmDelete) return;
 
   try {
-    const res = await axios.post("http://localhost:5000/api/coupons/bulk-delete", {
+    const res = await axios.post("https://dailyshopping-backend.onrender.com/api/coupons/bulk-delete", {
       ids: couponIds,
     });
 

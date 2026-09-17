@@ -15,7 +15,7 @@ export default function ContactAdmin() {
   const fetchData = async () => {
     setError("");
     try {
-      const res = await axios.get("http://localhost:5000/api/contactus");
+      const res = await axios.get("https://dailyshopping-backend.onrender.com/api/contactus");
       if (res.data && res.data.data) setData(res.data.data);
     } catch (err) {
       console.error(err);
@@ -57,7 +57,7 @@ export default function ContactAdmin() {
     setError("");
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/contactus/${data._id}`,
+        `https://dailyshopping-backend.onrender.com/api/contactus/${data._id}`,
         data
       );
       if (res.data.success) {

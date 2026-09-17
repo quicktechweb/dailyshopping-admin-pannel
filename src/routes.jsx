@@ -226,7 +226,7 @@ const router = createBrowserRouter([
   
  
      
-     { path: "/dashbaord-admin-luckyshop/login", element: <AdminLogin /> },
+     { path: "/dashbaord-admin-dailyshopping/login", element: <AdminLogin /> },
       {
             path: "/bkash/callback",
             element: <BkashCallback />,

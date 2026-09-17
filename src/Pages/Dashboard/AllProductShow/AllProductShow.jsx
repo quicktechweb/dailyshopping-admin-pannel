@@ -9,7 +9,7 @@ const AllProductShow = () => {
 
   // Fetch data from the server
   useEffect(() => {
-    fetch(`http://localhost:5000/allshowsproducts`) // Replace with your API URL
+    fetch(`https://dailyshopping-backend.onrender.com/allshowsproducts`) // Replace with your API URL
       .then((res) => res.json())
       .then((data) => {
         
@@ -21,7 +21,7 @@ const AllProductShow = () => {
 
   // Update product status to approved
   const handleApprove = (id) => {
-    fetch(`http://localhost:5000/approvedproducts/${id}`, {
+    fetch(`https://dailyshopping-backend.onrender.com/approvedproducts/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +49,7 @@ const AllProductShow = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/pendingdatsdelete/${id}`)
+          .delete(`https://dailyshopping-backend.onrender.com/pendingdatsdelete/${id}`)
           .then((response) => {
             response.status === 204 &&
               Swal.fire("Deleted!", "Your file has been deleted.", "success");

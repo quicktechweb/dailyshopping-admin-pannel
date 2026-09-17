@@ -14,8 +14,8 @@ export default function AdminSellerWithdraw() {
     try {
       const url =
         tab === "all"
-          ? "http://localhost:5000/api/wallet/admin/seller-withdraw-requests"
-          : `http://localhost:5000/api/wallet/admin/seller-withdraw-requests?status=${tab}`;
+          ? "https://dailyshopping-backend.onrender.com/api/wallet/admin/seller-withdraw-requests"
+          : `https://dailyshopping-backend.onrender.com/api/wallet/admin/seller-withdraw-requests?status=${tab}`;
       const { data } = await axios.get(url);
       setRequests(data?.requests || []);
     } catch (err) {
@@ -36,7 +36,7 @@ export default function AdminSellerWithdraw() {
       return;
     setProcessingId(id);
     try {
-      await axios.post(`http://localhost:5000/api/wallet/admin/seller-withdraw-approve/${id}`, {
+      await axios.post(`https://dailyshopping-backend.onrender.com/api/wallet/admin/seller-withdraw-approve/${id}`, {
         adminName: "Admin",
       });
       fetchRequests();
@@ -52,7 +52,7 @@ export default function AdminSellerWithdraw() {
     if (reason === null) return; // cancelled
     setProcessingId(id);
     try {
-      await axios.post(`http://localhost:5000/api/wallet/admin/seller-withdraw-reject/${id}`, {
+      await axios.post(`https://dailyshopping-backend.onrender.com/api/wallet/admin/seller-withdraw-reject/${id}`, {
         adminName: "Admin",
         reason,
       });

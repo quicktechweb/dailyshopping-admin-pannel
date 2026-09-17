@@ -11,7 +11,7 @@ export default function FAQAdmin() {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/faq");
+      const res = await axios.get("https://dailyshopping-backend.onrender.com/api/faq");
       setData(res.data.data);
     } catch (err) {
       console.error(err);
@@ -29,7 +29,7 @@ export default function FAQAdmin() {
 
   const handleSave = async () => {
     try {
-      await axios.put(`http://localhost:5000/api/faq/${data._id}`, data);
+      await axios.put(`https://dailyshopping-backend.onrender.com/api/faq/${data._id}`, data);
       alert("Saved successfully!");
       setEditing(false);
       fetchData();

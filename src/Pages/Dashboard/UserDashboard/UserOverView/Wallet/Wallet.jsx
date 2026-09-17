@@ -30,7 +30,7 @@ const Wallet = () => {
   const fetchTransactions = async () => {
     if (!user?._id) return;
     try {
-      const res = await axios.get(`http://localhost:5000/api/wallet/add-history/${user._id}`);
+      const res = await axios.get(`https://dailyshopping-backend.onrender.com/api/wallet/add-history/${user._id}`);
       setTransactions(res.data.history || []);
     } catch (err) {
       console.error(err);
@@ -41,7 +41,7 @@ const Wallet = () => {
   const fetchRequests = async () => {
     if (!user?._id) return;
     try {
-      const res = await axios.get(`http://localhost:5000/api/wallet/my-requests/${user._id}`);
+      const res = await axios.get(`https://dailyshopping-backend.onrender.com/api/wallet/my-requests/${user._id}`);
       setRequests(res.data.requests || []);
     } catch (err) {
       console.error(err);
@@ -63,7 +63,7 @@ const Wallet = () => {
 //     setLoading(true);
 
 //     // 1️⃣ Add funds
-//     const res = await axios.post("http://localhost:5000/api/wallet/add", {
+//     const res = await axios.post("https://dailyshopping-backend.onrender.com/api/wallet/add", {
 //       userId: user._id,
 //       amount: parseFloat(amount),
 //     });
@@ -87,7 +87,7 @@ const Wallet = () => {
 //       };
 
 //       const notifRes = await axios.post(
-//         "http://localhost:5000/api/notification/create",
+//         "https://dailyshopping-backend.onrender.com/api/notification/create",
 //         notifPayload
 //       );
 
@@ -120,7 +120,7 @@ const Wallet = () => {
       setLoading(true);
 
       // create bKash payment on backend
-      const res = await axios.post("http://localhost:5000/api/wallet/wallet/create", {
+      const res = await axios.post("https://dailyshopping-backend.onrender.com/api/wallet/wallet/create", {
         userId: user._id,
         amount: parseFloat(amount),
         isSandbox: true, // set false in production
@@ -146,7 +146,7 @@ const Wallet = () => {
       const onFocus = async () => {
         // Poll backend for latest wallet balance or fetch user info
         try {
-          const userRes = await axios.get(`http://localhost:5000/api/users/${user._id}`); // you should have this route
+          const userRes = await axios.get(`https://dailyshopping-backend.onrender.com/api/users/${user._id}`); // you should have this route
           if (userRes.data.success && userRes.data.user) {
             updateUser({ walletBalance: userRes.data.user.walletBalance });
             fetchTransactions();
@@ -184,7 +184,7 @@ const Wallet = () => {
 
     try {
       setWithdrawing(true);
-      const res = await axios.post("http://localhost:5000/api/wallet/withdraw-request", {
+      const res = await axios.post("https://dailyshopping-backend.onrender.com/api/wallet/withdraw-request", {
         userId: user._id,
         amount: parseFloat(withdrawAmount),
         method: withdrawMethod,

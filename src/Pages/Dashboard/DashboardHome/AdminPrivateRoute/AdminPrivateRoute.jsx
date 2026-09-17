@@ -6,7 +6,7 @@ export default function AdminProtectedRoute({ children }) {
 
   if (!user) {
     // Not logged in
-    return <Navigate to="/dashbaord-admin-luckyshop/login" replace />;
+    return <Navigate to="/dashbaord-admin-dailyshopping/login" replace />;
   }
 
   // Allow SUPERadmin, Moderator, or Support

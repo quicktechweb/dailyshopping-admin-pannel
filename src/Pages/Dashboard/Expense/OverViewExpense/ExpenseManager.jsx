@@ -25,14 +25,14 @@ const [allExpenses, setAllExpenses] = useState([]);
 
   // Fetch categories
   const fetchCategories = async () => {
-    const res = await axios.get("http://localhost:5000/api/expense-categories");
+    const res = await axios.get("https://dailyshopping-backend.onrender.com/api/expense-categories");
     setCategories(res.data);
   };
 
   // Fetch expenses with filters
  const fetchExpenses = async () => {
   try {
-    const res = await axios.get("http://localhost:5000/api/expenses");
+    const res = await axios.get("https://dailyshopping-backend.onrender.com/api/expenses");
     setAllExpenses(res.data); // Store all data
     setExpenses(res.data); // Show all data initially
   } catch (err) {
@@ -123,9 +123,9 @@ const paginatedExpenses = expenses.slice(
       };
 
       if (editingId) {
-        await axios.put(`http://localhost:5000/api/expenses/${editingId}`, payload);
+        await axios.put(`https://dailyshopping-backend.onrender.com/api/expenses/${editingId}`, payload);
       } else {
-        await axios.post("http://localhost:5000/api/expenses", payload);
+        await axios.post("https://dailyshopping-backend.onrender.com/api/expenses", payload);
       }
 
       setFormData({
@@ -156,7 +156,7 @@ const paginatedExpenses = expenses.slice(
 
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete?")) {
-      await axios.delete(`http://localhost:5000/api/expenses/${id}`);
+      await axios.delete(`https://dailyshopping-backend.onrender.com/api/expenses/${id}`);
       fetchExpenses();
     }
   };

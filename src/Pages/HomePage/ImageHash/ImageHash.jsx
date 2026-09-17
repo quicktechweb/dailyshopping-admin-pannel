@@ -23,7 +23,7 @@ const ImageHashUpdate = () => {
       setMessage("");
 
       await axios.patch(
-        `http://localhost:5000/api/products/${productId}/images-hash`,
+        `https://dailyshopping-backend.onrender.com/api/products/${productId}/images-hash`,
         { imagesHash }
       );
 

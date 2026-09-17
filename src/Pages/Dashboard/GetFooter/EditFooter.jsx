@@ -29,7 +29,7 @@ const EditFooter = () => {
   useEffect(() => {
     const fetchFooterData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/footer/${id}`);
+        const response = await fetch(`https://dailyshopping-backend.onrender.com/footer/${id}`);
         const result = await response.json();
         if (result) {
           setFooterData(result);
@@ -140,7 +140,7 @@ const EditFooter = () => {
     console.log("Footer ID:", id);
 
     try {
-      const response = await fetch(`http://localhost:5000/footer/${id}`, {
+      const response = await fetch(`https://dailyshopping-backend.onrender.com/footer/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(footerData),

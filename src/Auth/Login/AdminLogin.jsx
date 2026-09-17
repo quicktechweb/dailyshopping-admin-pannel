@@ -23,7 +23,7 @@ export default function AdminLogin() {
       <div className="bg-white w-full max-w-md shadow-[0_2px_18px_rgba(0,0,0,0.15)] mb-5 rounded-md flex overflow-hidden">
         {/* Left Side - Form */}
         <div className="w-full md:w-3/2 p-8">
-          <h2 className="text-sm font-bold mb-4">WELCOME TO Lucky Shop</h2>
+          <h2 className="text-sm font-bold mb-4">WELCOME TO DailyShopping</h2>
 
           {/* Tabs */}
           <div className="flex mb-4">

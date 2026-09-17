@@ -14,14 +14,14 @@ const SubCategory = () => {
 
   // Fetch subcategories
   const fetchSubcategories = () => {
-    fetch("http://localhost:5000/api/subcategories")
+    fetch("https://dailyshopping-backend.onrender.com/api/subcategories")
       .then((res) => res.json())
       .then((data) => setSubcategories(data));
   };
 
   // Fetch categories
   const fetchCategories = () => {
-    fetch("http://localhost:5000/api/categories")
+    fetch("https://dailyshopping-backend.onrender.com/api/categories")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   };
@@ -39,7 +39,7 @@ const SubCategory = () => {
     formData.append("image", file);
 
     try {
-      const res = await fetch("http://localhost:5000/upload", {
+      const res = await fetch("https://dailyshopping-backend.onrender.com/upload", {
         method: "POST",
         body: formData,
       });
@@ -77,8 +77,8 @@ const SubCategory = () => {
     const newSub = { ...form, subcategoryImg };
     const method = editId ? "PUT" : "POST";
     const url = editId
-      ? `http://localhost:5000/api/subcategories/${editId}`
-      : "http://localhost:5000/api/subcategories";
+      ? `https://dailyshopping-backend.onrender.com/api/subcategories/${editId}`
+      : "https://dailyshopping-backend.onrender.com/api/subcategories";
 
     await fetch(url, {
       method,
@@ -94,7 +94,7 @@ const SubCategory = () => {
 
   // Delete
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/api/subcategories/${id}`, { method: "DELETE" }).then(() =>
+    fetch(`https://dailyshopping-backend.onrender.com/api/subcategories/${id}`, { method: "DELETE" }).then(() =>
       fetchSubcategories()
     );
   };

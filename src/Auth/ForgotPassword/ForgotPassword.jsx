@@ -17,7 +17,7 @@ export default function ForgotPassword({ isOpen, onClose }) {
       return;
     }
     try {
-      const res = await fetch("http://localhost:5000/api/auth/forgot-send-otp", {
+      const res = await fetch("https://dailyshopping-backend.onrender.com/api/auth/forgot-send-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phoneNumber: phone }),
@@ -37,7 +37,7 @@ export default function ForgotPassword({ isOpen, onClose }) {
   // ✅ Verify OTP
   const handleVerifyOtp = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/auth/forgot-verify-otp", {
+      const res = await fetch("https://dailyshopping-backend.onrender.com/api/auth/forgot-verify-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phoneNumber: phone, otp }),
@@ -61,7 +61,7 @@ export default function ForgotPassword({ isOpen, onClose }) {
       return;
     }
     try {
-      const res = await fetch("http://localhost:5000/api/auth/reset-password", {
+      const res = await fetch("https://dailyshopping-backend.onrender.com/api/auth/reset-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phoneNumber: phone, newPassword }),
@@ -103,7 +103,7 @@ export default function ForgotPassword({ isOpen, onClose }) {
 
   const handleResendOtp = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/auth/forgot-send-otp", {
+      const res = await fetch("https://dailyshopping-backend.onrender.com/api/auth/forgot-send-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phoneNumber: phone }),

@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Store, Package, ChevronRight, Search } from "lucide-react";
 
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://dailyshopping-backend.onrender.com/api";
 
 export default function SellerProductsList() {
   const [sellers, setSellers] = useState([]);

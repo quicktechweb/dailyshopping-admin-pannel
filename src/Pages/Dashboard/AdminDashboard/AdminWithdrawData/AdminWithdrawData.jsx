@@ -10,10 +10,10 @@ const AdminWithdraw = () => {
  const fetchSummary = async () => {
   setLoading(true);
   try {
-    const withdrawRes = await axios.get("http://localhost:5000/api/wallet/withdraw-summary");
+    const withdrawRes = await axios.get("https://dailyshopping-backend.onrender.com/api/wallet/withdraw-summary");
     console.log("Withdraw summary response:", withdrawRes.data);
 
-    const usersRes = await axios.get("http://localhost:5000/api/auth/alluser");
+    const usersRes = await axios.get("https://dailyshopping-backend.onrender.com/api/auth/alluser");
     console.log("Users response:", usersRes.data);
 
     const withdraws = withdrawRes.data.data; // array of withdraw summary
@@ -57,7 +57,7 @@ const AdminWithdraw = () => {
   const handleApprove = async (id) => {
     if (!window.confirm("Approve this withdraw request?")) return;
     try {
-      await axios.post(`http://localhost:5000/api/wallet/withdraw-approve/${id}`, { adminName: "Admin" });
+      await axios.post(`https://dailyshopping-backend.onrender.com/api/wallet/withdraw-approve/${id}`, { adminName: "Admin" });
       fetchSummary();
     } catch (err) {
       console.error(err);
@@ -68,7 +68,7 @@ const AdminWithdraw = () => {
   const handleReject = async (id) => {
     if (!window.confirm("Reject this withdraw request?")) return;
     try {
-      await axios.post(`http://localhost:5000/api/wallet/withdraw-reject/${id}`);
+      await axios.post(`https://dailyshopping-backend.onrender.com/api/wallet/withdraw-reject/${id}`);
       fetchSummary();
     } catch (err) {
       console.error(err);

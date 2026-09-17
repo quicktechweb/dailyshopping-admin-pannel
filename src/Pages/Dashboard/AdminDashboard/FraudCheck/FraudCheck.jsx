@@ -15,7 +15,7 @@ const FraudCheck = () => {
     setResult(null);
 
     try {
-      const res = await axios.post("http://localhost:5000/api/fraudcheck", { phone });
+      const res = await axios.post("https://dailyshopping-backend.onrender.com/api/fraudcheck", { phone });
       setResult(res.data);
     } catch (err) {
       setError(err.response?.data?.message || "Something went wrong");

@@ -68,7 +68,7 @@ export default function AdminSellerOrderDetails() {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/api/seller-orders/${sellerId}`
+        `https://dailyshopping-backend.onrender.com/api/seller-orders/${sellerId}`
       );
       const list = data?.orders || [];
       setOrders(list);
@@ -95,7 +95,7 @@ export default function AdminSellerOrderDetails() {
   const handleSaveStatus = async (orderId) => {
     setSavingId(orderId);
     try {
-      await axios.put(`http://localhost:5000/api/orders/${orderId}/status`, {
+      await axios.put(`https://dailyshopping-backend.onrender.com/api/orders/${orderId}/status`, {
         status: statusMap[orderId],
       });
       alert("Order status updated");

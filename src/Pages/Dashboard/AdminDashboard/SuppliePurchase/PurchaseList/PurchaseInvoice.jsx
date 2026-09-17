@@ -11,7 +11,7 @@ export default function PurchaseInvoicePage() {
   useEffect(() => {
     const fetchPurchase = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/purchases/${params.id}`);
+        const res = await axios.get(`https://dailyshopping-backend.onrender.com/api/purchases/${params.id}`);
         setPurchase(res.data);
       } catch (err) {
         console.error(err);

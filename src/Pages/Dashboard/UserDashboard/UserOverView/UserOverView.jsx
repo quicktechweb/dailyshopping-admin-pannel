@@ -33,7 +33,7 @@ const fetchReferrals = async () => {
   if (!user?.myrefferalcode) return;
 
   try {
-    const res = await axios.get("http://localhost:5000/api/auth/alluser");
+    const res = await axios.get("https://dailyshopping-backend.onrender.com/api/auth/alluser");
     if (res.data.success) {
       // Filter users whose referralCode matches this user's myrefferalcode
       const myReferrals = res.data.users.filter(
@@ -52,7 +52,7 @@ const fetchReferrals = async () => {
   const fetchRequests = async () => {
     if (!user?._id) return;
     try {
-      const res = await axios.get(`http://localhost:5000/api/wallet/my-requests/${user._id}`);
+      const res = await axios.get(`https://dailyshopping-backend.onrender.com/api/wallet/my-requests/${user._id}`);
       setRequests(res.data.requests || []);
     } catch (err) {
       console.error(err);
@@ -62,7 +62,7 @@ const fetchReferrals = async () => {
   const fetchTransactions = async () => {
     if (!user?._id) return;
     try {
-      const res = await axios.get(`http://localhost:5000/api/wallet/add-history/${user._id}`);
+      const res = await axios.get(`https://dailyshopping-backend.onrender.com/api/wallet/add-history/${user._id}`);
       setTransactions(res.data.history || []);
     } catch (err) {
       console.error(err);
@@ -72,7 +72,7 @@ const fetchReferrals = async () => {
   const fetchMyOrders = async () => {
     if (!user) return;
     try {
-      const res = await axios.get("http://localhost:5000/api/my-orders", {
+      const res = await axios.get("https://dailyshopping-backend.onrender.com/api/my-orders", {
         params: { userAuth: user?.email || user?.phoneNumber },
       });
       setMyOrders(res.data || []);
@@ -84,7 +84,7 @@ const fetchReferrals = async () => {
  const fetchCoupons = async () => {
   if (!user) return;
   try {
-    const res = await axios.get("http://localhost:5000/api/coupons/my", {
+    const res = await axios.get("https://dailyshopping-backend.onrender.com/api/coupons/my", {
       params: { email: user?.email || "", phone: user?.phoneNumber || "" },
     });
     if (res.data.success) {
@@ -104,7 +104,7 @@ const fetchReferrals = async () => {
   const fetchWins = async () => {
     if (!user) return;
     try {
-      const res = await axios.get("http://localhost:5000/api/coupons/winners");
+      const res = await axios.get("https://dailyshopping-backend.onrender.com/api/coupons/winners");
       const data = res.data;
       if (data.success) {
         // Create a winners map
