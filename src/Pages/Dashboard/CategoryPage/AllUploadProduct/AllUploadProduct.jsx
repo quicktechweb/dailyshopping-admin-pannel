@@ -12,9 +12,10 @@ const AllUploadProduct = () => {
   const [editingProduct, setEditingProduct] = useState(null);
    const [searchTerm, setSearchTerm] = useState(""); 
    const [brands, setBrands] = useState([]);
+   const [sellers, setSellers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(""); 
-    //  const image_upload_api = `https://dailyshopping-backend.onrender.com/upload`;
+    //  const image_upload_api = `http://localhost:5000/upload`;
 const [campaigns, setCampaigns] = useState([]); // All campaigns from API
   const [selectedCampaign, setSelectedCampaign] = useState(""); // Selected campaign for dropdown
   const [campaignName, setCampaignName] = useState(""); 
@@ -46,6 +47,7 @@ const [brandImgFile, setBrandImgFile] = useState(null);
 const [isBulletModalOpen, setIsBulletModalOpen] = useState(false);
 const [bulletInput, setBulletInput] = useState("");
 const [isSubmitting, setIsSubmitting] = useState(false);
+const [isSavingSub, setIsSavingSub] = useState(false);
 
 const sizeDetailsRef = useRef(null);
 const colorDetailsRef = useRef(null);
@@ -57,7 +59,7 @@ const uploadImage = async (file) => {
   formData.append("image", file);
 
   try {
-    const res = await fetch("https://dailyshopping-backend.onrender.com/upload", {
+    const res = await fetch("http://localhost:5000/upload", {
       method: "POST",
       body: formData,
     });
@@ -89,7 +91,7 @@ const handleAddCategory = async () => {
     let imgUrl = "";
     if (categoryImgFile) imgUrl = await uploadImage(categoryImgFile);
 
-    const res = await fetch("https://dailyshopping-backend.onrender.com/api/categories", {
+    const res = await fetch("http://localhost:5000/api/categories", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -110,32 +112,54 @@ const handleAddCategory = async () => {
   }
 };
 
-const handleAddSubcategory = async () => {
-  if (!form.categoryName) return alert("Select Category first!");
+  const handleAddSubcategory = async () => {
+  if (isSavingSub) return;
 
+  if (!form.categoryName) return alert("Select Category first!");
+  if (!newSubName.trim()) return alert("Subcategory name is required!");
+  // image is optional now
+
+  setIsSavingSub(true);
   try {
     let imgUrl = "";
-    if (subImageFile) imgUrl = await uploadImage(subImageFile);
+    if (subImageFile) {
+      try {
+        imgUrl = await uploadImage(subImageFile);
+      } catch (uploadErr) {
+        console.error(uploadErr);
+        alert("Image upload failed, please try again.");
+        return; // stop only if user tried to upload but it failed
+      }
+    }
 
-    const res = await fetch("https://dailyshopping-backend.onrender.com/api/subcategories", {
+    const res = await fetch("http://localhost:5000/api/subcategories", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        name: newSubName,
+        name: newSubName.trim(),
         categoryName: form.categoryName,
-        subcategoryImg: imgUrl,
+        subcategoryImg: imgUrl, // will just be "" if no image
         status: "Active",
       }),
     });
 
     const data = await res.json();
+
+    if (!res.ok) {
+      return alert(data.message || "Failed to add subcategory");
+    }
+
     setSubcategories((prev) => [...prev, data]);
 
     setNewSubName("");
     setSubImageFile(null);
     setOpenSubModal(false);
+    alert("Subcategory added successfully!");
   } catch (err) {
-    alert("Failed to add subcategory");
+    console.error(err);
+    alert(err.message || "Failed to add subcategory");
+  } finally {
+    setIsSavingSub(false);
   }
 };
 
@@ -147,7 +171,7 @@ const handleAddChildcategory = async () => {
     let imgUrl = "";
     if (childImageFile) imgUrl = await uploadImage(childImageFile);
 
-    const res = await fetch("https://dailyshopping-backend.onrender.com/api/childcategories", {
+    const res = await fetch("http://localhost:5000/api/childcategories", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -179,7 +203,7 @@ const handleAddBrand = async () => {
       brandImgUrl = await uploadImage(brandImgFile);
     }
 
-    const res = await fetch("https://dailyshopping-backend.onrender.com/api/brands", {
+    const res = await fetch("http://localhost:5000/api/brands", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -230,6 +254,9 @@ const handleAddBrand = async () => {
     childcategoryImg:"",
     stock: "",
     couponPrice: "",
+     sellerId: "",        // 🆕 added
+  shopName: "",        // 🆕 added
+  mobileNumber: "",
     shop: "",
     totalcupon: "",
     description: "",
@@ -252,10 +279,11 @@ const handleAddBrand = async () => {
   const [form, setForm] = useState(emptyForm);
 
   useEffect(() => {
-    axios.get("https://dailyshopping-backend.onrender.com/api/categories").then((r) => setCategories(r.data));
-    axios.get("https://dailyshopping-backend.onrender.com/api/subcategories").then((r) => setSubcategories(r.data));
-    axios.get("https://dailyshopping-backend.onrender.com/api/childcategories").then((r) => setChildcategories(r.data));
-    axios.get("https://dailyshopping-backend.onrender.com/api/brands").then((r) => setBrands(r.data));
+    axios.get("http://localhost:5000/api/categories").then((r) => setCategories(r.data));
+    axios.get("http://localhost:5000/api/subcategories").then((r) => setSubcategories(r.data));
+    axios.get("http://localhost:5000/api/childcategories").then((r) => setChildcategories(r.data));
+    axios.get("http://localhost:5000/api/brands").then((r) => setBrands(r.data));
+     axios.get("http://localhost:5000/api/sellers").then((r) => setSellers(r.data));
     fetchProducts();
   }, []);
 
@@ -318,7 +346,7 @@ useEffect(() => {
 
 
   const fetchProducts = async () => {
-    const res = await axios.get("https://dailyshopping-backend.onrender.com/api/products");
+    const res = await axios.get("http://localhost:5000/api/products");
     setProducts(res.data);
   };
 
@@ -365,7 +393,7 @@ useEffect(() => {
         formData.append("image", file);
 
         const res = await axios.post(
-          "https://dailyshopping-backend.onrender.com/upload",
+          "http://localhost:5000/upload",
           formData,
           { headers: { "Content-Type": "multipart/form-data" } }
         );
@@ -390,13 +418,13 @@ useEffect(() => {
 
     if (editingProduct) {
       await axios.put(
-        `https://dailyshopping-backend.onrender.com/api/products/${editingProduct._id}`,
+        `http://localhost:5000/api/products/${editingProduct._id}`,
         productData
       );
       setEditingProduct(null);
     } else {
       await axios.post(
-        "https://dailyshopping-backend.onrender.com/api/products",
+        "http://localhost:5000/api/products",
         productData
       );
     }
@@ -472,7 +500,7 @@ useEffect(() => {
   useEffect(() => {
   const fetchCampaigns = async () => {
     try {
-      const res = await axios.get("https://dailyshopping-backend.onrender.com/api/campaigns");
+      const res = await axios.get("http://localhost:5000/api/campaigns");
       setCampaigns(res.data); // populate campaigns state
     } catch (err) {
       console.error("Error fetching campaigns:", err);
@@ -485,7 +513,7 @@ useEffect(() => {
 
   const handleDelete = async (id) => {
     if (window.confirm("Delete this product?")) {
-      await axios.delete(`https://dailyshopping-backend.onrender.com/api/products/${id}`);
+      await axios.delete(`http://localhost:5000/api/products/${id}`);
       fetchProducts();
     }
   };
@@ -904,6 +932,38 @@ useEffect(() => {
     />
   </div>
 
+  {/* ===== Seller Shop Selection ===== */}
+<div className="flex flex-col">
+  <label className="font-medium mb-1">Seller Shop</label>
+  <select
+    value={form.sellerId}
+    onChange={(e) => {
+      const selectedSeller = sellers.find((s) => s.sellerId === e.target.value);
+      setForm({
+        ...form,
+        sellerId: selectedSeller?.sellerId || "",
+        shopName: selectedSeller?.shopName || "",
+        mobileNumber: selectedSeller?.mobileNumber || "",
+      });
+    }}
+    className="border p-2 rounded w-full md:w-72"
+  >
+    <option value="">-- Select Seller Shop --</option>
+    {sellers.map((seller) => (
+      <option key={seller._id} value={seller.sellerId}>
+        {seller.shopName} — {seller.sellerId}
+      </option>
+    ))}
+  </select>
+
+  {form.sellerId && (
+    <p className="text-xs text-gray-500 mt-1">
+      Seller ID: <span className="font-medium">{form.sellerId}</span> | Phone:{" "}
+      <span className="font-medium">{form.mobileNumber}</span>
+    </p>
+  )}
+</div>
+
   {/* -------------------- Level 1: Type -------------------- */}
   <div className="flex flex-col">
     <label className="font-medium mb-1">Type</label>
@@ -913,9 +973,8 @@ useEffect(() => {
       className="border rounded-lg p-2"
     >
       <option value="">-- Type --</option>
-      <option value="topselling">TopSelling</option>
-      <option value="premium">Premium</option>
-      <option value="deals">Deals</option>
+      <option value="fordaily">ForDaily</option>
+   
     </select>
   </div>
 
@@ -1072,28 +1131,10 @@ useEffect(() => {
 </div>
 
   {/* -------------------- Level 3: Coupon Price -------------------- */}
-  <div className="flex flex-col">
-    <label className="font-medium mb-1">Coupon Price</label>
-    <input
-      type="number"
-      placeholder="Coupon Price"
-      className="border rounded-lg p-2"
-      value={form.couponPrice}
-      onChange={(e) => setForm({ ...form, couponPrice: e.target.value })}
-    />
-  </div>
+ 
 
   {/* -------------------- Level 3: Total Coupon -------------------- */}
-  <div className="flex flex-col">
-  <label className="font-medium mb-1">Total Coupon</label>
-  <input
-    type="number"
-    placeholder="Total Coupon"
-    className="border rounded-lg p-2"
-    value={form.totalcupon}
-    readOnly
-  />
-</div>
+ 
 
   <div className="flex flex-col">
   <label className="font-medium mb-1">Availability</label>
@@ -1106,27 +1147,6 @@ useEffect(() => {
   />
 </div>
 
-</div>
-
-
-        <div className="flex flex-col md:flex-row gap-4 md:gap-10">
-          {/* User Highest Buy Coupon */}
-<div className="flex flex-col">
-  <label htmlFor="userHighestBuyCoupon" className="mb-1 font-medium text-gray-700">
-    User Highest Buy Coupon
-  </label>
-  <input
-    type="number"
-    id="userHighestBuyCoupon"
-    name="userHighestBuyCoupon"
-    placeholder="Enter highest buy coupon"
-    className="border rounded-lg p-2"
-    value={form.userHighestBuyCoupon}
-    onChange={(e) => setForm({ ...form, userHighestBuyCoupon: e.target.value })}
-  />
-</div>
-
-{/* Stock Warning */}
 <div className="flex flex-col ">
   <label htmlFor="stockWarning" className="mb-1 font-medium text-gray-700">
     Stock Warning
@@ -1142,7 +1162,10 @@ useEffect(() => {
   />
 </div>
 
-        </div>
+</div>
+
+
+       
 
         {/* Remaining/Solds/Save */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -1286,27 +1309,57 @@ useEffect(() => {
   </div>
 )}
 
-{openSubModal && (
-  <div className="fixed inset-0 bg-black/40 flex justify-center items-center">
+ {openSubModal && (
+  <div className="fixed inset-0 bg-black/40 flex justify-center items-center z-50">
     <div className="bg-white p-6 w-96 rounded">
-      <h2 className="text-xl mb-3">Add Subcategory</h2>
+      <h2 className="text-xl mb-1">Add Subcategory</h2>
+      <p className="text-xs text-gray-500 mb-3">
+        Category: <span className="font-semibold">{form.categoryName}</span>
+      </p>
 
       <input
         className="border p-2 w-full mb-3"
-        placeholder="Subcategory Name"
+        placeholder="Subcategory Name *"
         value={newSubName}
         onChange={(e) => setNewSubName(e.target.value)}
       />
 
+      <label className="block text-sm font-medium mb-1">Subcategory Image *</label>
       <input
         type="file"
-        className="mb-3"
-        onChange={(e) => setSubImageFile(e.target.files[0])}
+        accept="image/*"
+        className="mb-3 block"
+        onChange={(e) => setSubImageFile(e.target.files[0] || null)}
       />
 
+      {subImageFile && (
+        <img
+          src={URL.createObjectURL(subImageFile)}
+          alt="preview"
+          className="h-20 w-20 object-cover rounded mb-3"
+        />
+      )}
+
       <div className="flex justify-end gap-2">
-        <button onClick={() => setOpenSubModal(false)} className="px-3 py-1 border">Cancel</button>
-        <button type="button" onClick={handleAddSubcategory} className="px-3 py-1 bg-green-600 text-white">Save</button>
+        <button
+          type="button"
+          onClick={() => {
+            setOpenSubModal(false);
+            setNewSubName("");
+            setSubImageFile(null);
+          }}
+          className="px-3 py-1 border"
+        >
+          Cancel
+        </button>
+        <button
+          type="button"
+          onClick={handleAddSubcategory}
+          disabled={isSavingSub}
+          className="px-3 py-1 bg-green-600 text-white disabled:opacity-60"
+        >
+          {isSavingSub ? "Saving..." : "Save"}
+        </button>
       </div>
     </div>
   </div>

@@ -12,7 +12,7 @@ export default function AddCategory() {
 
   // Fetch categories
   useEffect(() => {
-    fetch("https://dailyshopping-backend.onrender.com/api/categories")
+    fetch("http://localhost:5000/api/categories")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);
@@ -25,7 +25,7 @@ export default function AddCategory() {
     formData.append("image", file);
 
     try {
-      const res = await fetch("https://dailyshopping-backend.onrender.com/upload", {
+      const res = await fetch("http://localhost:5000/upload", {
         method: "POST",
         body: formData,
       });
@@ -64,7 +64,7 @@ export default function AddCategory() {
 
       let res, data;
       if (editId) {
-        res = await fetch(`https://dailyshopping-backend.onrender.com/api/categories/${editId}`, {
+        res = await fetch(`http://localhost:5000/api/categories/${editId}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newCategory),
@@ -73,7 +73,7 @@ export default function AddCategory() {
         setCategories(categories.map((c) => (c._id === data._id ? data : c)));
         setEditId(null);
       } else {
-        res = await fetch("https://dailyshopping-backend.onrender.com/api/categories", {
+        res = await fetch("http://localhost:5000/api/categories", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newCategory),
@@ -97,7 +97,7 @@ export default function AddCategory() {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this category?")) return;
 
-    await fetch(`https://dailyshopping-backend.onrender.com/api/categories/${id}`, { method: "DELETE" });
+    await fetch(`http://localhost:5000/api/categories/${id}`, { method: "DELETE" });
     setCategories(categories.filter((c) => c._id !== id));
   };
 

@@ -13,7 +13,7 @@ export default function SupplierList() {
   useEffect(() => {
     const fetchSuppliers = async () => {
       try {
-        const res = await axios.get("https://dailyshopping-backend.onrender.com/api/suppliers");
+        const res = await axios.get("http://localhost:5000/api/suppliers");
         setSuppliers(res.data);
       } catch (err) {
         console.error(err);

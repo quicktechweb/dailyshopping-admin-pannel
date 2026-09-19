@@ -36,7 +36,7 @@ const AdminReturnManagement = () => {
   const fetchReturns = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("https://dailyshopping-backend.onrender.com/api/returns");
+      const res = await axios.get("http://localhost:5000/api/returns");
       setReturns(res.data);
     } catch (err) {
       console.error(err);
@@ -52,7 +52,7 @@ const AdminReturnManagement = () => {
 
   const handleStatusChange = async (id, newStatus) => {
     try {
-      await axios.put(`https://dailyshopping-backend.onrender.com/api/orders/${id}/return-status`, {
+      await axios.put(`http://localhost:5000/api/orders/${id}/return-status`, {
         returnStatus: newStatus,
       });
 
@@ -84,7 +84,7 @@ const AdminReturnManagement = () => {
     setInvoiceLoading(true);
     setInvoiceOrder({}); // modal খুলে দাও, ভেতরে loading state দেখাবে
     try {
-      const res = await axios.get(`https://dailyshopping-backend.onrender.com/api/orders/${orderId}`);
+      const res = await axios.get(`http://localhost:5000/api/orders/${orderId}`);
       setInvoiceOrder(res.data);
     } catch (err) {
       console.error(err);

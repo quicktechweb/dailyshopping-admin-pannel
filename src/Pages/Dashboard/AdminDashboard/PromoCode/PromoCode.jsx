@@ -60,7 +60,7 @@ export default function PromoManager() {
   useEffect(() => {
     setLoadingProducts(true);
     axios
-      .get("https://dailyshopping-backend.onrender.com/api/products")
+      .get("http://localhost:5000/api/products")
       .then((res) => setProducts(res.data))
       .catch(() => alert("Failed to load products"))
       .finally(() => setLoadingProducts(false));
@@ -71,7 +71,7 @@ export default function PromoManager() {
     setLoadingPromos(true);
     try {
       const res = await axios.get(
-        "https://dailyshopping-backend.onrender.com/api/products/promo/category-list"
+        "http://localhost:5000/api/products/promo/category-list"
       );
       const map = {};
       (res.data.data || []).forEach((p) => {
@@ -130,7 +130,7 @@ export default function PromoManager() {
     setUpdatingCat(cat);
     try {
       const res = await axios.put(
-        "https://dailyshopping-backend.onrender.com/api/products/updatepromo/category",
+        "http://localhost:5000/api/products/updatepromo/category",
         {
           categoryName: cat,
           promoCode: data.promoCode,
@@ -176,7 +176,7 @@ export default function PromoManager() {
     setDeletingCat(cat);
     try {
       const res = await axios.put(
-        "https://dailyshopping-backend.onrender.com/api/products/updatepromo/category/delete",
+        "http://localhost:5000/api/products/updatepromo/category/delete",
         { categoryName: cat }
       );
       alert(res.data.message);
@@ -200,7 +200,7 @@ export default function PromoManager() {
     setUpdatingAll(true);
     try {
       const res = await axios.put(
-        "https://dailyshopping-backend.onrender.com/api/products/updatepromo/all",
+        "http://localhost:5000/api/products/updatepromo/all",
         {
           allProductPromoCode: promoCode,
           allProductPromoType: promoType,

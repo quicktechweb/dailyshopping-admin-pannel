@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const IMGBB_KEY = "746adaf1da9a1a48b000bec014639aeb";
-const BASE_URL = "https://dailyshopping-backend.onrender.com/api/categorybanner";
+const BASE_URL = "http://localhost:5000/api/categorybanner";
 
 const uploadToImgBB = async (file) => {
   const form = new FormData();
@@ -43,10 +43,10 @@ export default function AdminCategoryBanner() {
   // Fetch categories and subcategories
   const fetchCategories = async () => {
     try {
-      const catRes = await axios.get("https://dailyshopping-backend.onrender.com/api/categories");
+      const catRes = await axios.get("http://localhost:5000/api/categories");
       setCategories(catRes.data || []);
       const subRes = await axios.get(
-        "https://dailyshopping-backend.onrender.com/api/subcategories"
+        "http://localhost:5000/api/subcategories"
       );
       setSubcategories(subRes.data || []);
     } catch (err) {

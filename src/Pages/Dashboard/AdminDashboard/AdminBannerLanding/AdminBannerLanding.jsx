@@ -17,7 +17,7 @@ const AdminBannerLandingUpload = () => {
   const fetchBanners = async () => {
     try {
       setLoadingList(true);
-      const res = await axios.get(`https://dailyshopping-backend.onrender.com/api/bannerlanding/banners`);
+      const res = await axios.get(`http://localhost:5000/api/bannerlanding/banners`);
       setBanners(res.data.banners || []);
     } catch (err) {
       console.error(err);
@@ -63,7 +63,7 @@ const AdminBannerLandingUpload = () => {
 
     try {
       setUploading(true);
-      await axios.post(`https://dailyshopping-backend.onrender.com/api/bannerlanding/banners`, formData, {
+      await axios.post(`http://localhost:5000/api/bannerlanding/banners`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -85,7 +85,7 @@ const AdminBannerLandingUpload = () => {
     if (!confirm("এই banner টা delete করতে চাও?")) return;
     try {
       setDeletingId(id);
-      await axios.delete(`https://dailyshopping-backend.onrender.com/api/bannerlanding/banners/${id}`);
+      await axios.delete(`http://localhost:5000/api/bannerlanding/banners/${id}`);
       setBanners((prev) => prev.filter((b) => b._id !== id));
     } catch (err) {
       console.error(err);

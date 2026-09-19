@@ -11,7 +11,7 @@ export default function PixelAdmin() {
   useEffect(() => {
     const fetchPixel = async () => {
       try {
-        const res = await axios.get("https://dailyshopping-backend.onrender.com/api/pixel");
+        const res = await axios.get("http://localhost:5000/api/pixel");
         if (res.data && res.data.pixelId) {
           setPixelId(res.data.pixelId);
           setSavedPixelId(res.data.pixelId);
@@ -33,7 +33,7 @@ export default function PixelAdmin() {
 
     setLoading(true);
     try {
-      const res = await axios.post("https://dailyshopping-backend.onrender.com/api/pixel", { pixelId });
+      const res = await axios.post("http://localhost:5000/api/pixel", { pixelId });
       setSavedPixelId(res.data.pixel.pixelId); // Update savedPixelId
       setMessage("Pixel ID saved successfully!");
     } catch (err) {

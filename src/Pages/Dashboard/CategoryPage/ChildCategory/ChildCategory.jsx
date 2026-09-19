@@ -16,19 +16,19 @@ const ChildCategory = () => {
 
   // Fetch data
   const fetchChildCategories = () => {
-    fetch("https://dailyshopping-backend.onrender.com/api/childcategories")
+    fetch("http://localhost:5000/api/childcategories")
       .then((res) => res.json())
       .then((data) => setChildCategories(data));
   };
 
   const fetchCategories = () => {
-    fetch("https://dailyshopping-backend.onrender.com/api/categories")
+    fetch("http://localhost:5000/api/categories")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   };
 
   const fetchSubcategories = () => {
-    fetch("https://dailyshopping-backend.onrender.com/api/subcategories")
+    fetch("http://localhost:5000/api/subcategories")
       .then((res) => res.json())
       .then((data) => setSubcategories(data));
   };
@@ -52,7 +52,7 @@ const ChildCategory = () => {
     formData.append("image", file);
 
     try {
-      const res = await fetch("https://dailyshopping-backend.onrender.com/upload", {
+      const res = await fetch("http://localhost:5000/upload", {
         method: "POST",
         body: formData,
       });
@@ -89,8 +89,8 @@ const ChildCategory = () => {
     const newChild = { ...form, childCategoryImg };
     const method = editId ? "PUT" : "POST";
     const url = editId
-      ? `https://dailyshopping-backend.onrender.com/api/childcategories/${editId}`
-      : "https://dailyshopping-backend.onrender.com/api/childcategories";
+      ? `http://localhost:5000/api/childcategories/${editId}`
+      : "http://localhost:5000/api/childcategories";
 
     const res = await fetch(url, {
       method,
@@ -114,7 +114,7 @@ const ChildCategory = () => {
 
   // Delete
   const handleDelete = (id) => {
-    fetch(`https://dailyshopping-backend.onrender.com/api/childcategories/${id}`, { method: "DELETE" }).then(() =>
+    fetch(`http://localhost:5000/api/childcategories/${id}`, { method: "DELETE" }).then(() =>
       fetchChildCategories()
     );
   };

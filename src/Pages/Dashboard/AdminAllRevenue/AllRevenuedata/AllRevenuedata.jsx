@@ -73,7 +73,7 @@ const AllRevenuedata = () => {
   const fetchCoupons = async () => {
     try {
       setLoading(true);
-      const res = await fetch("https://dailyshopping-backend.onrender.com/api/coupons");
+      const res = await fetch("http://localhost:5000/api/coupons");
       const data = await res.json();
       if (data.success) {
         const sorted = (data.coupons || []).sort(

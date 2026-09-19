@@ -30,7 +30,7 @@ const DashboardSideBar = ({ setIsOpenSidebar }) => {
       icon: FaHome,
       roles: ["SUPERadmin"],
       links: [
-        { title: "Super Admin", icon: FaDesktop, path: "/dashboard-admin-dailyshopping/dashboard/superadmin" },
+        { title: "Super Admin", icon: FaDesktop, path: "/dashboard-admin-dailyshopping/dashboard/rolemanagement" },
         { title: "Add Role",    icon: FaDesktop, path: "/dashboard-admin-dailyshopping/dashboard/rolemanager" },
       ],
     },
@@ -58,6 +58,7 @@ const DashboardSideBar = ({ setIsOpenSidebar }) => {
       links: [
         { title: "Seller Withdraw",  icon: FaDesktop,   path: "/dashboard-admin-dailyshopping/dashboard/sellerwithdraw-data" },
         { title: "Admin Commsion",  icon: FaDesktop,   path: "/dashboard-admin-dailyshopping/dashboard/admin-commsion" },
+        { title: "Delivery Commison",  icon: FaDesktop,   path: "/dashboard-admin-dailyshopping/dashboard/admincommsionreport" },
        
       ],
     },

@@ -13,7 +13,7 @@ export default function CampaignPage() {
 
   // Fetch campaigns
   useEffect(() => {
-    axios.get("https://dailyshopping-backend.onrender.com/api/campaigns")
+    axios.get("http://localhost:5000/api/campaigns")
       .then(res => setCampaigns(res.data))
       .catch(err => console.log(err));
   }, []);
@@ -25,7 +25,7 @@ export default function CampaignPage() {
     const formData = new FormData();
     formData.append("image", file);
 
-    const res = await axios.post("https://dailyshopping-backend.onrender.com/upload", formData, {
+    const res = await axios.post("http://localhost:5000/upload", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
 
@@ -60,7 +60,7 @@ export default function CampaignPage() {
       if (editId) {
         // UPDATE CAMPAIGN
         res = await axios.put(
-          `https://dailyshopping-backend.onrender.com/api/campaigns/${editId}`,
+          `http://localhost:5000/api/campaigns/${editId}`,
           body
         );
 
@@ -71,7 +71,7 @@ export default function CampaignPage() {
 
       } else {
         // ADD NEW CAMPAIGN
-        res = await axios.post("https://dailyshopping-backend.onrender.com/api/campaigns", body);
+        res = await axios.post("http://localhost:5000/api/campaigns", body);
         setCampaigns([...campaigns, res.data]);
       }
 
@@ -102,8 +102,68 @@ export default function CampaignPage() {
   const handleDelete = async (id) => {
     if (!confirm("Are you sure to delete?")) return;
 
-    await axios.delete(`https://dailyshopping-backend.onrender.com/api/campaigns/${id}`);
+    await axios.delete(`http://localhost:5000/api/campaigns/${id}`);
     setCampaigns(campaigns.filter((c) => c._id !== id));
+  };
+
+  // ===== 🆕 Parent Banner (shared across ALL campaigns) =====
+  const [parentBannerImages, setParentBannerImages] = useState([]);
+  const [parentBannerFile, setParentBannerFile] = useState(null);
+  const [parentBannerPreview, setParentBannerPreview] = useState(null);
+  const [isSavingBanner, setIsSavingBanner] = useState(false);
+
+  // Fetch parent banner images on load
+  useEffect(() => {
+    axios.get("http://localhost:5000/api/campaign-parent-banner")
+      .then((res) => setParentBannerImages(res.data?.images || []))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const handleParentBannerFileChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    setParentBannerFile(file);
+    setParentBannerPreview(URL.createObjectURL(file));
+  };
+
+  const handleAddParentBannerImage = async () => {
+    if (!parentBannerFile) return alert("Select an image first!");
+
+    setIsSavingBanner(true);
+    try {
+      const imageUrl = await uploadImage(parentBannerFile);
+      if (!imageUrl) return;
+
+      const res = await axios.post(
+        "http://localhost:5000/api/campaign-parent-banner/add-image",
+        { imageUrl }
+      );
+
+      setParentBannerImages(res.data.images || []);
+      setParentBannerFile(null);
+      setParentBannerPreview(null);
+      alert("Banner image added!");
+    } catch (err) {
+      console.log(err);
+      alert("Failed to add banner image");
+    } finally {
+      setIsSavingBanner(false);
+    }
+  };
+
+  const handleRemoveParentBannerImage = async (imageUrl) => {
+    if (!confirm("Remove this banner image?")) return;
+
+    try {
+      const res = await axios.delete(
+        "http://localhost:5000/api/campaign-parent-banner/remove-image",
+        { data: { imageUrl } }
+      );
+      setParentBannerImages(res.data.images || []);
+    } catch (err) {
+      console.log(err);
+      alert("Failed to remove image");
+    }
   };
 
   return (
@@ -166,6 +226,66 @@ export default function CampaignPage() {
           {editId ? "Update Campaign" : "Add Campaign"}
         </button>
       </form>
+
+      {/* ====== 🆕 PARENT BANNER (shared for ALL campaigns) ====== */}
+      <div className="mb-8 p-4 border rounded bg-gray-50">
+        <h2 className="text-xl font-bold mb-1">
+          Parent Banner Images
+        </h2>
+        <p className="text-sm text-gray-500 mb-4">
+          These images are not tied to any single campaign — they show up as
+          the common banner across every campaign/promo section on the site.
+          You can upload as many as you want.
+        </p>
+
+        <div className="flex gap-2 mb-4">
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleParentBannerFileChange}
+            className="border p-2 flex-1 rounded"
+          />
+          <button
+            type="button"
+            onClick={handleAddParentBannerImage}
+            disabled={isSavingBanner}
+            className="bg-green-600 text-white px-4 py-2 rounded disabled:opacity-60"
+          >
+            {isSavingBanner ? "Uploading..." : "Add Image"}
+          </button>
+        </div>
+
+        {parentBannerPreview && (
+          <img
+            src={parentBannerPreview}
+            className="w-32 h-20 object-cover rounded border mb-4"
+            alt="preview"
+          />
+        )}
+
+        <div className="flex flex-wrap gap-3">
+          {parentBannerImages.map((img) => (
+            <div key={img} className="relative">
+              <img
+                src={img}
+                className="w-32 h-20 object-cover rounded border"
+                alt="banner"
+              />
+              <button
+                type="button"
+                onClick={() => handleRemoveParentBannerImage(img)}
+                className="absolute top-1 right-1 bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center"
+              >
+                ✕
+              </button>
+            </div>
+          ))}
+        </div>
+
+        {parentBannerImages.length === 0 && (
+          <p className="text-gray-400 text-sm">No banner images yet.</p>
+        )}
+      </div>
 
       {/* ====== CAMPAIGN TABLE ====== */}
       <table className="w-full border text-left">

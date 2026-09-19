@@ -12,7 +12,7 @@ export default function SellerVerification() {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        `https://dailyshopping-backend.onrender.com/api/sellers/verification/requests?status=${filter}`
+        `http://localhost:5000/api/sellers/verification/requests?status=${filter}`
       );
       setSellers(data.sellers || []);
     } catch (err) {
@@ -51,7 +51,7 @@ export default function SellerVerification() {
 
     try {
       const { data } = await axios.put(
-        `https://dailyshopping-backend.onrender.com/api/sellers/${id}/verification`,
+        `http://localhost:5000/api/sellers/${id}/verification`,
         { action, reason }
       );
       if (data.success) {

@@ -111,7 +111,7 @@ export default function LuckyShopNavbar() {
       try {
         // ✅ axiosInstance instead of fetch
         const res = await axios.get(
-          "https://dailyshopping-backend.onrender.com/api/products/filterapidata",
+          "http://localhost:5000/api/products/filterapidata",
         );
         const data = res.data;
         setProducts(data);
@@ -293,7 +293,7 @@ export default function LuckyShopNavbar() {
 
     try {
       const res = await axios.post(
-        "https://dailyshopping-backend.onrender.com/api/products/image-search",
+        "http://localhost:5000/api/products/image-search",
         formData,
       );
       if (res.data && res.data.length > 0) {
@@ -318,7 +318,7 @@ export default function LuckyShopNavbar() {
   const fetchCategories = async () => {
     try {
       const res = await axios.get(
-        "https://dailyshopping-backend.onrender.com/api/navbarcategory",
+        "http://localhost:5000/api/navbarcategory",
       );
       const data = res.data;
 
@@ -966,7 +966,7 @@ export default function LuckyShopNavbar() {
 
                   try {
                     const res = await axios.get(
-                      `https://dailyshopping-backend.onrender.com/api/products/searchvalue?q=${search}`,
+                      `http://localhost:5000/api/products/searchvalue?q=${search}`,
                     );
 
                     const products = res.data.data;

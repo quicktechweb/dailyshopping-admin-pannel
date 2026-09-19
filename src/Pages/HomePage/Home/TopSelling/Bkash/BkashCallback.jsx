@@ -10,7 +10,7 @@ export default function BkashCallback() {
     const status = params.get("status");
 
     if (status === "success" && paymentID) {
-      axios.post("https://dailyshopping-backend.onrender.com/api/coupons/execute", { paymentID, status })
+      axios.post("http://localhost:5000/api/coupons/execute", { paymentID, status })
         .then((res) => {
           alert("✅ Payment successful!");
           console.log(res.data);

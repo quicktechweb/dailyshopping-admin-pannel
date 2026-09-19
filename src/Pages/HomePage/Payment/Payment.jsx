@@ -192,7 +192,7 @@ if (paymentMethod === "bkash") {
   try {
     setLoading(true);
 
-    const res = await axios.post("https://dailyshopping-backend.onrender.com/api/orders/bkash/create", {
+    const res = await axios.post("http://localhost:5000/api/orders/bkash/create", {
       ...orderData,
       amount: grandtotal,
       userPhone: e.target.phone.value,
@@ -241,7 +241,7 @@ if (paymentMethod === "bkash") {
 
         // get wallet balance
         const walletRes = await axios.post(
-          "https://dailyshopping-backend.onrender.com/api/auth/users/get-wallet",
+          "http://localhost:5000/api/auth/users/get-wallet",
           { auth }
         );
 
@@ -258,7 +258,7 @@ if (paymentMethod === "bkash") {
         }
 
         const payRes = await axios.post(
-          "https://dailyshopping-backend.onrender.com/api/orders/wallet-pay",
+          "http://localhost:5000/api/orders/wallet-pay",
           {
             ...orderData,
             amount: grandtotal,
@@ -316,7 +316,7 @@ if (paymentMethod === "bkash") {
 try {
   setLoading(true);
 
-  const res = await axios.post("https://dailyshopping-backend.onrender.com/api/orders/cod", orderData);
+  const res = await axios.post("http://localhost:5000/api/orders/cod", orderData);
   setSuccess(true);
 
   // Clear cart

@@ -10,7 +10,7 @@ const ManageExpenseCategory = () => {
   const [showForm, setShowForm] = useState(false); // form initially hidden
 
   const fetchCategories = async () => {
-    const res = await axios.get("https://dailyshopping-backend.onrender.com/api/expense-categories");
+    const res = await axios.get("http://localhost:5000/api/expense-categories");
     setCategories(res.data);
   };
 
@@ -24,12 +24,12 @@ const ManageExpenseCategory = () => {
 
     if (editing) {
       await axios.put(
-        `https://dailyshopping-backend.onrender.com/api/expense-categories/${editing._id}`,
+        `http://localhost:5000/api/expense-categories/${editing._id}`,
         { name, status }
       );
       setEditing(null);
     } else {
-      await axios.post("https://dailyshopping-backend.onrender.com/api/expense-categories", { name, status });
+      await axios.post("http://localhost:5000/api/expense-categories", { name, status });
     }
 
     setName("");
@@ -47,7 +47,7 @@ const ManageExpenseCategory = () => {
 
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this category?")) {
-      await axios.delete(`https://dailyshopping-backend.onrender.com/api/expense-categories/${id}`);
+      await axios.delete(`http://localhost:5000/api/expense-categories/${id}`);
       fetchCategories();
     }
   };

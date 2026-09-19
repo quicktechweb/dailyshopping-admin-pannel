@@ -124,6 +124,9 @@ import SellerProductsDetail from "./Pages/Dashboard/SellerPanneldata/SellerProdu
 import AdminSellerOrderList from "./Pages/Dashboard/SellerPanneldata/AdminSellerOrderList.jsx";
 import AdminSellerOrderDetails from "./Pages/Dashboard/SellerPanneldata/AdminSellerOrderDetails.jsx";
 import AdminReferralSystem from "./Pages/Dashboard/AdminRefferalsystem/AdminRefferalSystem.jsx";
+import AdminCommissionReport from "./Pages/Dashboard/SellerWithdraw/AdminCommsionReport.jsx";
+import DailyShoppingCare from "./Pages/Comapany/Dailyshoppingcare.jsx";
+import RoleManagement from "./Pages/Dashboard/Rollmanagement/Rollmanagement.jsx";
 // import PrivateRoute from "./Pages/Shared/PrivetRoute/PrivetRoute";
 
 
@@ -334,6 +337,10 @@ const router = createBrowserRouter([
             path: "/dashboard/myorder",
             element: <MyOrders />,
           },
+          {
+            path: "/dashboard/dailyshoppingcare",
+            element: <DailyShoppingCare />,
+          },
          
         
           {
@@ -449,6 +456,14 @@ const router = createBrowserRouter([
             path: "/dashboard-admin-dailyshopping/dashboard/addbrand",
             element: <AddBrand />,
           },
+           {
+            path: "/dashboard-admin-dailyshopping/dashboard/rolemanagement",
+            element: <RoleManagement />,
+          },
+          // {
+          //   path: "/dashboard-admin-boinogorsetparts/dashboard/superadminaddrole",
+          //   element: <StaffManagement />,
+          // },
           {
             path: "/dashboard-admin-dailyshopping/dashboard/subadmin",
             element: <SubAdmin />,
@@ -684,6 +699,10 @@ const router = createBrowserRouter([
           {
             path: "/dashboard-admin-dailyshopping/dashboard/campain",
             element: <CampaignPage/>,
+          },
+          {
+            path: "/dashboard-admin-dailyshopping/dashboard/admincommsionreport",
+            element: <AdminCommissionReport/>,
           },
           {
             path: "/dashboard-admin-dailyshopping/dashboard/adminwinnerdata",

@@ -38,7 +38,7 @@ const [canResend, setCanResend] = useState(false);
 
     // 🔹 Send OTP first
     try {
-      const res = await fetch(`https://dailyshopping-backend.onrender.com/api/auth/send-otp`, {
+      const res = await fetch(`http://localhost:5000/api/auth/send-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phoneNumber: phone }),
@@ -61,7 +61,7 @@ const [canResend, setCanResend] = useState(false);
  const verifyOtpAndRegister = async () => {
   try {
     // OTP verify (same)
-    const res = await fetch(`https://dailyshopping-backend.onrender.com/api/auth/verify-otp`, {
+    const res = await fetch(`http://localhost:5000/api/auth/verify-otp`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ phoneNumber: phone, otp }),
@@ -75,7 +75,7 @@ const [canResend, setCanResend] = useState(false);
 
     // Register user
     const myrefferalcode = `REF-${nanoid(8).toUpperCase()}`;
-    const regRes = await fetch(`https://dailyshopping-backend.onrender.com/api/auth/register`, {
+    const regRes = await fetch(`http://localhost:5000/api/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -128,7 +128,7 @@ const [canResend, setCanResend] = useState(false);
 
   const handleResendOtp = async () => {
   try {
-    const res = await fetch(`https://dailyshopping-backend.onrender.com/api/auth/send-otp`, {
+    const res = await fetch(`http://localhost:5000/api/auth/send-otp`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ phoneNumber: phone }),

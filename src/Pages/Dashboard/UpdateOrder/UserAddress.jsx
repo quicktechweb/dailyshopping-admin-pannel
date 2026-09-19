@@ -18,7 +18,7 @@ const CustomerAddress = ({ order, onStatusUpdate }) => {
     console.log(`Updating status for order: ${id} to status: ${status}`);
 
     // 1️⃣ Update order status in backend
-    const res = await axios.put(`https://dailyshopping-backend.onrender.com/api/orders/${id}/status`, { status });
+    const res = await axios.put(`http://localhost:5000/api/orders/${id}/status`, { status });
     console.log("Order status update response:", res.data);
 
     // alert("Status updated: " + res.data.status);
@@ -44,7 +44,7 @@ const CustomerAddress = ({ order, onStatusUpdate }) => {
       console.log("Sending notification payload:", notifPayload);
 
       const notifRes = await axios.post(
-        "https://dailyshopping-backend.onrender.com/api/notification/create",
+        "http://localhost:5000/api/notification/create",
         notifPayload
       );
 

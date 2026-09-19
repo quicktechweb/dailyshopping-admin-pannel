@@ -20,14 +20,14 @@ const PurchaseEntry = () => {
 
   // ✅ Fetch suppliers
   useEffect(() => {
-    axios.get("https://dailyshopping-backend.onrender.com/api/suppliers").then((res) => {
+    axios.get("http://localhost:5000/api/suppliers").then((res) => {
       setSuppliers(res.data);
     });
   }, []);
 
   // ✅ Fetch products
   useEffect(() => {
-    axios.get("https://dailyshopping-backend.onrender.com/api/products").then((res) => {
+    axios.get("http://localhost:5000/api/products").then((res) => {
       setProducts(res.data);
     });
   }, []);
@@ -131,7 +131,7 @@ const PurchaseEntry = () => {
   console.log("🧾 Final form before posting:", JSON.stringify(form, null, 2));
 
   try {
-    await axios.post("https://dailyshopping-backend.onrender.com/api/purchases", form);
+    await axios.post("http://localhost:5000/api/purchases", form);
     Swal.fire("✅ Success!", "Purchase created successfully!", "success");
 
     // ✅ Reset form after successful submission

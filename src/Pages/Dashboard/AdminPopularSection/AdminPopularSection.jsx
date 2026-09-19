@@ -32,7 +32,7 @@ export default function AdminPopularSection() {
   const fetchSection = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`https://dailyshopping-backend.onrender.com/api/popular/section`);
+      const res = await axios.get(`http://localhost:5000/api/popular/section`);
       const s = res.data.section;
       setSection(s);
       setForm({
@@ -77,7 +77,7 @@ export default function AdminPopularSection() {
       if (appStoreImageFile) formData.append("appStoreImage", appStoreImageFile);
       if (playStoreImageFile) formData.append("playStoreImage", playStoreImageFile);
 
-      const res = await axios.put(`https://dailyshopping-backend.onrender.com/api/popular/section`, formData, {
+      const res = await axios.put(`http://localhost:5000/api/popular/section`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 

@@ -14,7 +14,7 @@ export const NotificationProvider = ({ children }) => {
   useEffect(() => {
     if (!user?._id) return;
 
-    axios.get(`https://dailyshopping-backend.onrender.com/api/notification/${user._id}`)
+    axios.get(`http://localhost:5000/api/notification/${user._id}`)
       .then(res => {
         if (res.data.success) setNotifications(res.data.notifications);
       })

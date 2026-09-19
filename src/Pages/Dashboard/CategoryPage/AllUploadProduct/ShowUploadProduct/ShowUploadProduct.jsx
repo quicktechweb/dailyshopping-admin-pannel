@@ -58,10 +58,10 @@ const ShowUploadProduct = () => {
   const [form, setForm] = useState(emptyForm);
 
   useEffect(() => {
-    axios.get("https://dailyshopping-backend.onrender.com/api/categories").then((r) => setCategories(r.data));
-    axios.get("https://dailyshopping-backend.onrender.com/api/subcategories").then((r) => setSubcategories(r.data));
-    axios.get("https://dailyshopping-backend.onrender.com/api/childcategories").then((r) => setChildcategories(r.data));
-    axios.get("https://dailyshopping-backend.onrender.com/api/brands").then((r) => setBrands(r.data));
+    axios.get("http://localhost:5000/api/categories").then((r) => setCategories(r.data));
+    axios.get("http://localhost:5000/api/subcategories").then((r) => setSubcategories(r.data));
+    axios.get("http://localhost:5000/api/childcategories").then((r) => setChildcategories(r.data));
+    axios.get("http://localhost:5000/api/brands").then((r) => setBrands(r.data));
     fetchProducts();
   }, []);
 
@@ -93,7 +93,7 @@ const ShowUploadProduct = () => {
   }, [editingProduct]);
 
   const fetchProducts = async () => {
-    const res = await axios.get("https://dailyshopping-backend.onrender.com/api/products");
+    const res = await axios.get("http://localhost:5000/api/products");
     setProducts(res.data);
   };
 
@@ -148,12 +148,12 @@ const ShowUploadProduct = () => {
     try {
       if (editingProduct) {
         await axios.put(
-          `https://dailyshopping-backend.onrender.com/api/products/${editingProduct._id}`,
+          `http://localhost:5000/api/products/${editingProduct._id}`,
           productData
         );
         setEditingProduct(null);
       } else {
-        await axios.post("https://dailyshopping-backend.onrender.com/api/products", productData);
+        await axios.post("http://localhost:5000/api/products", productData);
       }
       setForm(emptyForm);
       setFiles([]);
@@ -208,7 +208,7 @@ const ShowUploadProduct = () => {
 
   const handleDelete = async (id) => {
     if (window.confirm("Delete this product?")) {
-      await axios.delete(`https://dailyshopping-backend.onrender.com/api/products/${id}`);
+      await axios.delete(`http://localhost:5000/api/products/${id}`);
       fetchProducts();
     }
   };

@@ -15,7 +15,7 @@ export default function SupplierInvoice() {
   useEffect(() => {
     const fetchSupplier = async () => {
       try {
-        const res = await axios.get(`https://dailyshopping-backend.onrender.com/api/suppliers/${id}`);
+        const res = await axios.get(`http://localhost:5000/api/suppliers/${id}`);
         setSupplier(res.data);
       } catch (err) {
         console.error("❌ Failed to fetch supplier:", err);
@@ -30,7 +30,7 @@ export default function SupplierInvoice() {
       setLoading(true);
       try {
         const res = await axios.get(
-          `https://dailyshopping-backend.onrender.com/api/suppliers/${id}/invoice`
+          `http://localhost:5000/api/suppliers/${id}/invoice`
         );
         setInvoiceData(res.data);
       } catch (err) {

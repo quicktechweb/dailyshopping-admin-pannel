@@ -17,7 +17,7 @@ const ActiveCoupons = () => {
   useEffect(() => {
     const fetchCoupons = async () => {
       try {
-        const { data } = await axios.get("https://dailyshopping-backend.onrender.com/api/coupons/my", {
+        const { data } = await axios.get("http://localhost:5000/api/coupons/my", {
           params: { email: user?.email || "", phone: user?.phoneNumber || "" },
         });
         if (data.success) setCoupons(data.coupons);
@@ -34,7 +34,7 @@ const ActiveCoupons = () => {
   useEffect(() => {
     const fetchWinners = async () => {
       try {
-        const res = await fetch("https://dailyshopping-backend.onrender.com/api/coupons/winners");
+        const res = await fetch("http://localhost:5000/api/coupons/winners");
         const data = await res.json();
         if (data.success) {
           const winnerMap = {};

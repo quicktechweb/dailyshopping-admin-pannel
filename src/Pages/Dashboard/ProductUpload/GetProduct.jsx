@@ -14,7 +14,7 @@ const GetProduct = () => {
     async function fetchData() {
       try {
         const response = await fetch(
-          `https://dailyshopping-backend.onrender.com/getproducts`
+          `http://localhost:5000/getproducts`
         );
         const result = await response.json();
         setData(result);
@@ -41,7 +41,7 @@ const GetProduct = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`https://dailyshopping-backend.onrender.com/productdatadelete/${id}`)
+          .delete(`http://localhost:5000/productdatadelete/${id}`)
           .then((response) => {
             response.status === 204 &&
               Swal.fire("Deleted!", "Your file has been deleted.", "success");

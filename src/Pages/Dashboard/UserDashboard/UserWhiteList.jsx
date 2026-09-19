@@ -25,7 +25,7 @@ export default function UserWhiteList() {
 
     const fetchWishlist = async () => {
       try {
-        const res = await axios.get("https://dailyshopping-backend.onrender.com/api/wishlist", {
+        const res = await axios.get("http://localhost:5000/api/wishlist", {
           params: { email, phone },
         });
         setWishlist(res.data);
@@ -42,7 +42,7 @@ export default function UserWhiteList() {
   // ❌ Delete item from wishlist
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://dailyshopping-backend.onrender.com/api/wishlist/${id}`);
+      await axios.delete(`http://localhost:5000/api/wishlist/${id}`);
       setWishlist(wishlist.filter(item => item._id !== id)); // UI থেকে রিমুভ
     } catch (error) {
       console.error("Delete failed:", error);

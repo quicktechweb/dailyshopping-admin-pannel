@@ -20,7 +20,7 @@ export default function AdminHomeBrand() {
   // Fetch existing brands
   const fetchBrands = async () => {
     try {
-      const res = await axios.get("https://dailyshopping-backend.onrender.com/api/brands");
+      const res = await axios.get("http://localhost:5000/api/brands");
       setBrands(res.data);
     } catch (err) {
       console.error(err);
@@ -30,7 +30,7 @@ export default function AdminHomeBrand() {
   // Fetch categories
   // const fetchCategories = async () => {
   //   try {
-  //     const res = await axios.get("https://dailyshopping-backend.onrender.com/api/categories");
+  //     const res = await axios.get("http://localhost:5000/api/categories");
   //     setCategories(res.data || []);
   //   } catch (err) {
   //     console.error(err);
@@ -57,7 +57,7 @@ export default function AdminHomeBrand() {
   formData.append("image", file);
 
   try {
-    const res = await fetch("https://dailyshopping-backend.onrender.com/upload", {
+    const res = await fetch("http://localhost:5000/upload", {
       method: "POST",
       body: formData,
     });
@@ -101,10 +101,10 @@ export default function AdminHomeBrand() {
 
     try {
       if (form._id) {
-        await axios.put(`https://dailyshopping-backend.onrender.com/api/brands/${form._id}`, payload);
+        await axios.put(`http://localhost:5000/api/brands/${form._id}`, payload);
         alert("✅ Brand updated!");
       } else {
-        await axios.post("https://dailyshopping-backend.onrender.com/api/brands", payload);
+        await axios.post("http://localhost:5000/api/brands", payload);
         alert("✅ Brand added!");
       }
       setForm({ brandName: "", brandImg: "", category: "", _id: "" });
@@ -132,7 +132,7 @@ export default function AdminHomeBrand() {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this brand?")) return;
     try {
-      await axios.delete(`https://dailyshopping-backend.onrender.com/api/brands/${id}`);
+      await axios.delete(`http://localhost:5000/api/brands/${id}`);
       alert("🗑️ Brand deleted");
       fetchBrands();
     } catch (err) {

@@ -12,7 +12,7 @@ export default function TermsConditionAdmin() {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("https://dailyshopping-backend.onrender.com/api/termscondition");
+      const res = await axios.get("http://localhost:5000/api/termscondition");
       setData(res.data.data);
     } catch (err) {
       console.error(err);
@@ -46,7 +46,7 @@ export default function TermsConditionAdmin() {
     if (!data?._id) return;
     setSaving(true);
     try {
-      const res = await axios.put(`https://dailyshopping-backend.onrender.com/api/termscondition/${data._id}`, data);
+      const res = await axios.put(`http://localhost:5000/api/termscondition/${data._id}`, data);
       setData(res.data.data);
       setEditing(false);
       alert("Saved successfully ✅");

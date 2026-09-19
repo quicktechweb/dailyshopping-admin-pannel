@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const BASE_URL = "https://dailyshopping-backend.onrender.com/api/promosection";
+const BASE_URL = "http://localhost:5000/api/promosection";
 
 // UPLOAD HELPER
 
@@ -14,7 +14,7 @@ const uploadToImgBB = async (file) => {
   formData.append("image", file);
 
   try {
-    const res = await fetch("https://dailyshopping-backend.onrender.com/upload", {
+    const res = await fetch("http://localhost:5000/upload", {
       method: "POST",
       body: formData,
     });

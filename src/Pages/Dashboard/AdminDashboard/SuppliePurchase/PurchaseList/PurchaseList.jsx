@@ -17,7 +17,7 @@ const PurchaseList = () => {
   useEffect(() => {
     const fetchPurchases = async () => {
       try {
-        const res = await axios.get("https://dailyshopping-backend.onrender.com/api/purchases");
+        const res = await axios.get("http://localhost:5000/api/purchases");
         setPurchases(res.data);
       } catch (err) {
         console.error("❌ Failed to fetch purchases:", err);
@@ -40,7 +40,7 @@ const PurchaseList = () => {
     if (!confirm.isConfirmed) return;
 
     try {
-      await axios.delete(`https://dailyshopping-backend.onrender.com/api/purchases/${id}`);
+      await axios.delete(`http://localhost:5000/api/purchases/${id}`);
       setPurchases((prev) => prev.filter((p) => p._id !== id));
       Swal.fire("Deleted!", "Purchase deleted successfully.", "success");
     } catch (err) {
@@ -72,7 +72,7 @@ const paginatedPurchases = purchases.slice(
   // 🔹 View purchase
   const handleView = async (id) => {
     try {
-      const res = await axios.get(`https://dailyshopping-backend.onrender.com/api/purchases/${id}`);
+      const res = await axios.get(`http://localhost:5000/api/purchases/${id}`);
       const purchase = res.data;
       Swal.fire({
         title: `🧾 Purchase: ${purchase.invoiceNo}`,
@@ -111,7 +111,7 @@ const paginatedPurchases = purchases.slice(
       const updatedData = { ...editingPurchase, totalAmount, dueAmount, paidAmount, items: editItems };
 
       const res = await axios.put(
-        `https://dailyshopping-backend.onrender.com/api/purchases/${editingPurchase._id}`,
+        `http://localhost:5000/api/purchases/${editingPurchase._id}`,
         updatedData
       );
 

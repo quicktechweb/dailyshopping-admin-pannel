@@ -10,7 +10,7 @@ const MessageSender = () => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    axios.get("https://dailyshopping-backend.onrender.com/api/message/users").then((res) => {
+    axios.get("http://localhost:5000/api/message/users").then((res) => {
       setUsers(res.data);
     });
   }, []);
@@ -26,7 +26,7 @@ const MessageSender = () => {
       return;
     }
 
-    await axios.post("https://dailyshopping-backend.onrender.com/api/message/send", {
+    await axios.post("http://localhost:5000/api/message/send", {
       userIds: selectedUsers,
       title,
       message,

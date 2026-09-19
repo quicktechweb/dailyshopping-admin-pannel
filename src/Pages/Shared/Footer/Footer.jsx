@@ -1,355 +1,507 @@
-import { useEffect, useState, useContext } from "react";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaYoutube,
-  FaLinkedinIn,
-  FaPhoneAlt,
-  FaMobileAlt,
-  FaDownload,
-  FaRocket,
-  FaBoxOpen,
-  FaHome,
-  FaShoppingCart,
-  FaUser,
-  FaList,
-  FaGift,
-} from "react-icons/fa";
-import { Link, useLocation } from "react-router-dom";
-import { CartContext } from "../Context/CartContext";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
+import { Trash2, Plus, Upload, Loader2 } from "lucide-react";
 
-const Footer = () => {
-  const location = useLocation();
-  const currentPath = location.pathname;
-  const isActive = (path) => currentPath === path;
-  const cartProducts = useContext(CartContext)[0];
-  const { user } = useAuth();
+const IMGBB_API_KEY = "ab454291ebee91b49b021ecac51be17c";
+const API_URL = "http://localhost:5000/api/footer";
 
-  let totalQuantity = cartProducts.reduce(
-    (acc, product) => acc + (product.quantity || 1),
-    0
+// 🔹 Upload a single file to imgbb, returns the hosted image URL
+const uploadToImgbb = async (file) => {
+  const formData = new FormData();
+  formData.append("image", file);
+
+  const res = await axios.post(
+    `https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`,
+    formData
   );
 
-  const [footerData, setFooterData] = useState(null);
+  return res.data?.data?.url;
+};
+
+const ICON_OPTIONS = [
+  { value: "tag", label: "Tag (discount)" },
+  { value: "gift", label: "Gift (promotions)" },
+  { value: "truck", label: "Truck (shipping)" },
+];
+
+export default function AdminFooterManagement() {
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+
+  const [paymentMethods, setPaymentMethods] = useState([]);
+  const [appPromo, setAppPromo] = useState({
+    heading: "",
+    benefits: [],
+    qrCodeText: "",
+    qrCodeImg: "",
+    storeBadges: [],
+    learnMoreText: "",
+    learnMoreLink: "#",
+  });
+
+  // Track which specific image slot is currently uploading (for spinners)
+  const [uploadingKey, setUploadingKey] = useState(null);
+
+  const fetchFooterData = async () => {
+    try {
+      const res = await axios.get(API_URL);
+      if (res.data?.success) {
+        setPaymentMethods(res.data.data.paymentMethods || []);
+        setAppPromo(res.data.data.appPromo || {});
+      }
+    } catch (err) {
+      console.error("Footer fetch error:", err);
+      Swal.fire("Error", "Could not load footer data.", "error");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    axios
-      .get("https://dailyshopping-backend.onrender.com/api/footer")
-      .then((res) => {
-        if (res.data.success && res.data.footer) {
-          setFooterData(res.data.footer);
-        }
-      })
-      .catch((err) => console.log(err));
+    fetchFooterData();
   }, []);
 
-  if (!footerData) return null;
+  // ================= PAYMENT METHODS =================
+
+  const handleAddPaymentMethod = () => {
+    setPaymentMethods((prev) => [...prev, { img: "", alt: "" }]);
+  };
+
+  const handleRemovePaymentMethod = (index) => {
+    setPaymentMethods((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const handlePaymentAltChange = (index, value) => {
+    setPaymentMethods((prev) =>
+      prev.map((pm, i) => (i === index ? { ...pm, alt: value } : pm))
+    );
+  };
+
+  const handlePaymentImageUpload = async (index, file) => {
+    if (!file) return;
+    const key = `payment-${index}`;
+    setUploadingKey(key);
+    try {
+      const url = await uploadToImgbb(file);
+      setPaymentMethods((prev) =>
+        prev.map((pm, i) => (i === index ? { ...pm, img: url } : pm))
+      );
+    } catch (err) {
+      console.error("Upload error:", err);
+      Swal.fire("Error", "Image upload failed. Try again.", "error");
+    } finally {
+      setUploadingKey(null);
+    }
+  };
+
+  const handleSavePaymentMethods = async () => {
+    setSaving(true);
+    try {
+      const res = await axios.patch(`${API_URL}/payment-methods`, {
+        paymentMethods,
+      });
+      if (res.data?.success) {
+        Swal.fire({
+          icon: "success",
+          title: "Saved",
+          text: "Payment methods updated successfully.",
+          timer: 1800,
+          showConfirmButton: false,
+        });
+      }
+    } catch (err) {
+      console.error("Save error:", err);
+      Swal.fire("Error", "Could not save payment methods.", "error");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  // ================= APP PROMO =================
+
+  const handlePromoFieldChange = (field, value) => {
+    setAppPromo((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleAddBenefit = () => {
+    setAppPromo((prev) => ({
+      ...prev,
+      benefits: [...(prev.benefits || []), { icon: "tag", text: "" }],
+    }));
+  };
+
+  const handleRemoveBenefit = (index) => {
+    setAppPromo((prev) => ({
+      ...prev,
+      benefits: prev.benefits.filter((_, i) => i !== index),
+    }));
+  };
+
+  const handleBenefitChange = (index, field, value) => {
+    setAppPromo((prev) => ({
+      ...prev,
+      benefits: prev.benefits.map((b, i) =>
+        i === index ? { ...b, [field]: value } : b
+      ),
+    }));
+  };
+
+  const handleQrCodeUpload = async (file) => {
+    if (!file) return;
+    setUploadingKey("qrcode");
+    try {
+      const url = await uploadToImgbb(file);
+      setAppPromo((prev) => ({ ...prev, qrCodeImg: url }));
+    } catch (err) {
+      console.error("Upload error:", err);
+      Swal.fire("Error", "QR code upload failed. Try again.", "error");
+    } finally {
+      setUploadingKey(null);
+    }
+  };
+
+  const handleAddStoreBadge = () => {
+    setAppPromo((prev) => ({
+      ...prev,
+      storeBadges: [...(prev.storeBadges || []), { img: "", alt: "" }],
+    }));
+  };
+
+  const handleRemoveStoreBadge = (index) => {
+    setAppPromo((prev) => ({
+      ...prev,
+      storeBadges: prev.storeBadges.filter((_, i) => i !== index),
+    }));
+  };
+
+  const handleStoreBadgeAltChange = (index, value) => {
+    setAppPromo((prev) => ({
+      ...prev,
+      storeBadges: prev.storeBadges.map((b, i) =>
+        i === index ? { ...b, alt: value } : b
+      ),
+    }));
+  };
+
+  const handleStoreBadgeUpload = async (index, file) => {
+    if (!file) return;
+    const key = `badge-${index}`;
+    setUploadingKey(key);
+    try {
+      const url = await uploadToImgbb(file);
+      setAppPromo((prev) => ({
+        ...prev,
+        storeBadges: prev.storeBadges.map((b, i) =>
+          i === index ? { ...b, img: url } : b
+        ),
+      }));
+    } catch (err) {
+      console.error("Upload error:", err);
+      Swal.fire("Error", "Image upload failed. Try again.", "error");
+    } finally {
+      setUploadingKey(null);
+    }
+  };
+
+  const handleSaveAppPromo = async () => {
+    setSaving(true);
+    try {
+      const res = await axios.patch(`${API_URL}/app-promo`, { appPromo });
+      if (res.data?.success) {
+        Swal.fire({
+          icon: "success",
+          title: "Saved",
+          text: "App promo section updated successfully.",
+          timer: 1800,
+          showConfirmButton: false,
+        });
+      }
+    } catch (err) {
+      console.error("Save error:", err);
+      Swal.fire("Error", "Could not save app promo section.", "error");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="p-10 text-center text-gray-500">
+        <Loader2 className="animate-spin inline-block mr-2" />
+        Loading footer settings...
+      </div>
+    );
+  }
 
   return (
-    <div>
-      <footer className="bg-white hidden sm:block text-sm text-gray-700 mt-5">
-        {/* Top Footer Grid */}
-        <div className="max-w-[1280px] md:max-w-[1380px] sm:max-w-[95%] mx-auto lg:px-20 px-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-          {/* QUICK LINKS */}
-          <div>
-            <h4 className="text-gray-800 font-semibold text-base mb-4">
-              {footerData.headings?.quickLinks || "Quick Links"}
-            </h4>
-            <ul className="space-y-2 text-gray-600">
-              {/* {footerData.quickLinks?.map((link) => ( */}
-              <li>
-                <Link
-                  to={`/about`}
-                  className="hover:text-blue-600 cursor-pointer transition block"
-                >
-                  About us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={`/contactus`}
-                  className="hover:text-blue-600 cursor-pointer transition block"
-                >
-                  Contact Us
-                </Link>
-              </li>
-              <li>
-               <a
-  href="https://luckyshop.com.bd/sitemap.xml"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="hover:text-blue-600 cursor-pointer transition block"
->
-  Sitemap
-</a>
+    <div className="max-w-5xl mx-auto p-6 space-y-10">
+      <h1 className="text-2xl font-bold text-gray-800">Footer Management</h1>
+      <p className="text-sm text-gray-500 -mt-6">
+        Edit the two right-side footer sections: Payment Method logos and the App Promo block.
+      </p>
 
-              </li>
-              <li>
-                <Link
-                  to={`/shippingpolicy`}
-                  className="hover:text-blue-600 cursor-pointer transition block"
-                >
-                  Shipping Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={`/warrantypolicy`}
-                  className="hover:text-blue-600 cursor-pointer transition block"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={`/termsconditions`}
-                  className="hover:text-blue-600 cursor-pointer transition block"
-                >
-                  Terms Conditions
-                </Link>
-              </li>
-              {/* ))} */}
-            </ul>
-          </div>
+      {/* ================= PAYMENT METHOD SECTION ================= */}
+      <section className="bg-white border rounded-xl p-6 shadow-sm">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-lg font-semibold text-gray-800">Payment Method Logos</h2>
+          <button
+            onClick={handleAddPaymentMethod}
+            className="flex items-center gap-1 text-sm bg-green-600 text-white px-3 py-1.5 rounded-lg hover:bg-green-700"
+          >
+            <Plus size={16} /> Add Logo
+          </button>
+        </div>
 
-          {/* LUCKYSHOP */}
-          <div>
-            <h4 className="text-gray-800 font-semibold text-base mb-4">
-              {footerData.headings?.luckyShop || "LuckyShop"}
-            </h4>
-            <ul className="space-y-2 text-gray-600">
-              {/* {footerData.luckyShop?.map((link) => ( */}
-              <li>
-                <Link
-                  to={`/`}
-                  className="hover:text-blue-600 cursor-pointer transition block"
-                >
-                  Download App
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={`/brandlist`}
-                  className="hover:text-blue-600 cursor-pointer transition block"
-                >
-                  Brand List
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={`/blog`}
-                  className="hover:text-blue-600 cursor-pointer transition block"
-                >
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={`/faq`}
-                  className="hover:text-blue-600 cursor-pointer transition block"
-                >
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={`/customerreview`}
-                  className="hover:text-blue-600 cursor-pointer transition block"
-                >
-                  Customer Review
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={`/dashboard/trackorders`}
-                  className="hover:text-blue-600 cursor-pointer transition block"
-                >
-                  Track Order
-                </Link>
-              </li>
-              {/* ))} */}
-            </ul>
-          </div>
+        <div className="space-y-4">
+          {paymentMethods.length === 0 && (
+            <p className="text-sm text-gray-400">No payment method logos added yet.</p>
+          )}
 
-          {/* PAYMENT METHODS */}
-          <div>
-            <h4 className="text-gray-800 font-semibold text-base mb-4">
-              {footerData.headings?.payment || "Payment"}
-            </h4>
-            <div className="space-y-3">
-              {footerData.payment?.map((p) => (
-                <div key={p._id} className="flex items-center space-x-2">
-                  <img src={p.icon} alt={p.name} className="w-6 h-6" />
-                  <span>{p.name}</span>
+          {paymentMethods.map((pm, index) => {
+            const key = `payment-${index}`;
+            return (
+              <div
+                key={index}
+                className="flex items-center gap-4 border rounded-lg p-3"
+              >
+                <div className="w-24 h-16 flex items-center justify-center border rounded bg-gray-50 shrink-0 overflow-hidden">
+                  {uploadingKey === key ? (
+                    <Loader2 className="animate-spin text-gray-400" size={20} />
+                  ) : pm.img ? (
+                    <img src={pm.img} alt={pm.alt} className="max-w-full max-h-full object-contain" />
+                  ) : (
+                    <span className="text-xs text-gray-400">No image</span>
+                  )}
                 </div>
-              ))}
-            </div>
-          </div>
 
-          {/* SHIPPING OPTIONS */}
-          <div>
-            <h4 className="text-gray-800 font-semibold text-base mb-4">
-              {footerData.headings?.shipping || "Shipping"}
-            </h4>
-            <div className="space-y-4">
-              {footerData.shipping?.map((s) => (
-                <div key={s._id} className="flex items-start space-x-3">
-                  <span className="bg-gray-400 px-2 py-1 rounded text-white font-semibold text-sm flex items-center justify-center">
-                    {s.label === "Express Shipping" && <FaRocket />}
-                    {s.label === "Standard Shipping" && <FaBoxOpen />}
-                  </span>
-                  <div>
-                    <p className="font-semibold">{s.label}</p>
-                    <p className="text-xs text-gray-500">{s.subtitle}</p>
-                  </div>
+                <div className="flex-1 space-y-2">
+                  <input
+                    type="text"
+                    placeholder="Alt text (e.g. PCI DSS)"
+                    value={pm.alt}
+                    onChange={(e) => handlePaymentAltChange(index, e.target.value)}
+                    className="w-full border rounded px-3 py-1.5 text-sm"
+                  />
+                  <label className="flex items-center gap-2 text-sm text-blue-600 cursor-pointer w-fit">
+                    <Upload size={14} />
+                    Upload image
+                    <input
+                      type="file"
+                      accept="image/*"
+                      hidden
+                      onChange={(e) => handlePaymentImageUpload(index, e.target.files[0])}
+                    />
+                  </label>
                 </div>
-              ))}
-            </div>
+
+                <button
+                  onClick={() => handleRemovePaymentMethod(index)}
+                  className="text-red-500 hover:text-red-700"
+                >
+                  <Trash2 size={18} />
+                </button>
+              </div>
+            );
+          })}
+        </div>
+
+        <button
+          onClick={handleSavePaymentMethods}
+          disabled={saving}
+          className="mt-5 bg-blue-600 hover:bg-blue-700 disabled:opacity-60 text-white px-5 py-2 rounded-lg text-sm font-semibold"
+        >
+          {saving ? "Saving..." : "Save Payment Methods"}
+        </button>
+      </section>
+
+      {/* ================= APP PROMO SECTION ================= */}
+      <section className="bg-white border rounded-xl p-6 shadow-sm">
+        <h2 className="text-lg font-semibold text-gray-800 mb-4">App Promo Section</h2>
+
+        {/* Heading */}
+        <div className="mb-5">
+          <label className="block text-sm text-gray-600 mb-1">Heading</label>
+          <input
+            type="text"
+            value={appPromo.heading || ""}
+            onChange={(e) => handlePromoFieldChange("heading", e.target.value)}
+            className="w-full border rounded px-3 py-2 text-sm"
+            placeholder="Enjoy special benefits on the app:"
+          />
+        </div>
+
+        {/* Benefits */}
+        <div className="mb-6">
+          <div className="flex items-center justify-between mb-2">
+            <label className="text-sm text-gray-600">Benefit List</label>
+            <button
+              onClick={handleAddBenefit}
+              className="flex items-center gap-1 text-xs bg-green-600 text-white px-2.5 py-1 rounded hover:bg-green-700"
+            >
+              <Plus size={14} /> Add Benefit
+            </button>
           </div>
 
-          {/* CITIES COVERED */}
-          <div>
-            <h4 className="text-gray-800 font-semibold text-base mb-4">
-              {footerData.headings?.citiesCovered || "Cities Covered"}
-            </h4>
-            <ul className="space-y-2 text-gray-600">
-              {footerData.citiesCovered?.map((city, i) => (
-                <li key={i}>{city}</li>
-              ))}
-            </ul>
-          </div>
-
-          {/* SUPPORT */}
-          <div>
-            <h4 className="text-gray-800 font-semibold text-base mb-4">
-              {footerData.headings?.support || "24/7 Support"}
-            </h4>
-            <div className="-ms-3 rounded-md p-3 mb-3 ">
-              <p className="font-semibold text-gray-700 flex items-center gap-2">
-                <FaPhoneAlt /> {footerData.boxed?.title || "Customer Support"}
-              </p>
-              <p className="text-xs text-gray-500">{footerData.boxed?.note}</p>
-            </div>
-            <div className="mb-3 flex items-center gap-2">
-              <FaMobileAlt className="text-base" />
-              <span>{footerData.boxed?.servicesLabel}</span>
-              <span>{footerData.boxed?.phone}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <FaDownload />
-              <p className="font-semibold">{footerData.boxed?.downloadAppLabel}</p>
-            </div>
-            <div className="grid grid-cols-2 space-x-3 mt-2">
-              <img
-                src={footerData.boxed?.appImages?.apple}
-                alt="Apple"
-                className="h-8"
-              />
-              <img
-                src={footerData.boxed?.appImages?.google}
-                alt="Google Play"
-                className="h-8 "
-              />
-            </div>
+          <div className="space-y-2">
+            {(appPromo.benefits || []).map((b, index) => (
+              <div key={index} className="flex items-center gap-2">
+                <select
+                  value={b.icon}
+                  onChange={(e) => handleBenefitChange(index, "icon", e.target.value)}
+                  className="border rounded px-2 py-1.5 text-sm"
+                >
+                  {ICON_OPTIONS.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+                <input
+                  type="text"
+                  value={b.text}
+                  onChange={(e) => handleBenefitChange(index, "text", e.target.value)}
+                  placeholder="Benefit text"
+                  className="flex-1 border rounded px-3 py-1.5 text-sm"
+                />
+                <button
+                  onClick={() => handleRemoveBenefit(index)}
+                  className="text-red-500 hover:text-red-700"
+                >
+                  <Trash2 size={16} />
+                </button>
+              </div>
+            ))}
           </div>
         </div>
 
-      
+        {/* QR code text */}
+        <div className="mb-4">
+          <label className="block text-sm text-gray-600 mb-1">QR Code Description</label>
+          <input
+            type="text"
+            value={appPromo.qrCodeText || ""}
+            onChange={(e) => handlePromoFieldChange("qrCodeText", e.target.value)}
+            className="w-full border rounded px-3 py-2 text-sm"
+          />
+        </div>
 
-        {/* Bottom Bar */}
-        <div className="max-w-7xl mx-auto px-4 mt-6 pt-4 border-t flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-        
-          <div className="flex items-center space-x-4 text-[20px]">
-            <span>{footerData.followUsLabel}</span>
-            {footerData.social?.map((s) => {
-              const Icon = { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn }[s.icon];
-              return Icon ? <Icon key={s._id} className="hover:text-blue-600 cursor-pointer" /> : null;
+        {/* QR code image */}
+        <div className="mb-6">
+          <label className="block text-sm text-gray-600 mb-1">QR Code Image</label>
+          <div className="flex items-center gap-4">
+            <div className="w-24 h-28 border rounded bg-gray-50 flex items-center justify-center overflow-hidden shrink-0">
+              {uploadingKey === "qrcode" ? (
+                <Loader2 className="animate-spin text-gray-400" size={20} />
+              ) : appPromo.qrCodeImg ? (
+                <img src={appPromo.qrCodeImg} alt="QR" className="max-w-full max-h-full object-contain" />
+              ) : (
+                <span className="text-xs text-gray-400">No QR</span>
+              )}
+            </div>
+            <label className="flex items-center gap-2 text-sm text-blue-600 cursor-pointer">
+              <Upload size={14} />
+              Upload QR code
+              <input
+                type="file"
+                accept="image/*"
+                hidden
+                onChange={(e) => handleQrCodeUpload(e.target.files[0])}
+              />
+            </label>
+          </div>
+        </div>
+
+        {/* Store badges */}
+        <div className="mb-6">
+          <div className="flex items-center justify-between mb-2">
+            <label className="text-sm text-gray-600">Store Badges (Google Play / App Store / AppGallery)</label>
+            <button
+              onClick={handleAddStoreBadge}
+              className="flex items-center gap-1 text-xs bg-green-600 text-white px-2.5 py-1 rounded hover:bg-green-700"
+            >
+              <Plus size={14} /> Add Badge
+            </button>
+          </div>
+
+          <div className="space-y-3">
+            {(appPromo.storeBadges || []).map((badge, index) => {
+              const key = `badge-${index}`;
+              return (
+                <div key={index} className="flex items-center gap-4 border rounded-lg p-3">
+                  <div className="w-28 h-12 border rounded bg-gray-50 flex items-center justify-center overflow-hidden shrink-0">
+                    {uploadingKey === key ? (
+                      <Loader2 className="animate-spin text-gray-400" size={18} />
+                    ) : badge.img ? (
+                      <img src={badge.img} alt={badge.alt} className="max-w-full max-h-full object-contain" />
+                    ) : (
+                      <span className="text-xs text-gray-400">No image</span>
+                    )}
+                  </div>
+
+                  <div className="flex-1 space-y-2">
+                    <input
+                      type="text"
+                      placeholder="Alt text (e.g. Google Play)"
+                      value={badge.alt}
+                      onChange={(e) => handleStoreBadgeAltChange(index, e.target.value)}
+                      className="w-full border rounded px-3 py-1.5 text-sm"
+                    />
+                    <label className="flex items-center gap-2 text-sm text-blue-600 cursor-pointer w-fit">
+                      <Upload size={14} />
+                      Upload image
+                      <input
+                        type="file"
+                        accept="image/*"
+                        hidden
+                        onChange={(e) => handleStoreBadgeUpload(index, e.target.files[0])}
+                      />
+                    </label>
+                  </div>
+
+                  <button
+                    onClick={() => handleRemoveStoreBadge(index)}
+                    className="text-red-500 hover:text-red-700"
+                  >
+                    <Trash2 size={18} />
+                  </button>
+                </div>
+              );
             })}
           </div>
         </div>
-      </footer>
 
-      <div className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-[0_-2px_10px_rgba(0,0,0,0.1)] z-50 md:hidden">
-        {" "}
-        <div className="relative flex justify-between items-center px-6 py-2">
-          {" "}
-          {/* === Home === */}{" "}
-          <Link
-            to="/"
-            className={`flex flex-col items-center justify-center text-[11px] transition-all duration-300 ${isActive("/") ? "text-[#19745B] font-semibold" : "text-gray-500"
-              }`}
-          >
-            {" "}
-            <span className="text-xl mb-1">
-              {" "}
-              <FaHome />{" "}
-            </span>{" "}
-            <span className="mt-1">Home</span>{" "}
-          </Link>{" "}
-          {/* === Category === */}{" "}
-          <Link
-            to="/categorypartmobile"
-            className={`flex flex-col items-center justify-center text-[11px] transition-all duration-300 ${isActive("/categorypartmobile")
-                ? "text-[#19745B] font-semibold"
-                : "text-gray-500"
-              }`}
-          >
-            {" "}
-            <span className="text-xl mb-1">
-              {" "}
-              <FaList />{" "}
-            </span>{" "}
-            <span className="mt-1">Category</span>{" "}
-          </Link>{" "}
-          {/* === Cart (center floating button) === */}{" "}
-          <Link
-            to="/orderreview"
-            className={`relative flex flex-col items-center  justify-center text-[11px] transition-all duration-300 ${isActive("/orderreview") ? "text-[#19745B]" : "text-gray-500"
-              }`}
-          >
-            <div className="absolute -top-12 left-1/3 transform -translate-x-1/2 bg-gradient-to-t from-[#19745B] to-[#1B9C7E] text-white rounded-full w-16 h-16 shadow-xl border-[5px] border-white flex items-center justify-center">
-              <FaShoppingCart className="text-2xl" />
-              {/* Quantity number on top-right corner of cart icon */}
-              <span className="absolute top-1 right-2 bg-[#19745B] text-white w-5 h-5 text-xs rounded-full flex items-center justify-center font-bold">
-                {totalQuantity || 0}
-              </span>
-            </div>
-          </Link>
+        {/* Learn More link */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          <div>
+            <label className="block text-sm text-gray-600 mb-1">Learn More Text</label>
+            <input
+              type="text"
+              value={appPromo.learnMoreText || ""}
+              onChange={(e) => handlePromoFieldChange("learnMoreText", e.target.value)}
+              className="w-full border rounded px-3 py-2 text-sm"
+            />
+          </div>
+          <div>
+            <label className="block text-sm text-gray-600 mb-1">Learn More Link</label>
+            <input
+              type="text"
+              value={appPromo.learnMoreLink || ""}
+              onChange={(e) => handlePromoFieldChange("learnMoreLink", e.target.value)}
+              className="w-full border rounded px-3 py-2 text-sm"
+              placeholder="https://..."
+            />
+          </div>
+        </div>
 
-          {/* === Offers === */}{" "}
-          <Link
-            to="/winnerstatics"
-            className={`flex flex-col items-center justify-center text-[11px] transition-all duration-300 ${isActive("/winnerstatics")
-                ? "text-[#19745B] font-semibold"
-                : "text-gray-500"
-              }`}
-          >
-            {" "}
-            <span className="text-xl mb-1">
-              {" "}
-              <FaGift />{" "}
-            </span>{" "}
-            <span className="mt-1">Winner</span>{" "}
-          </Link>{" "}
-          {/* === Account === */}{" "}
-          <Link
-            to={user ? "/dashboard" : "/registration"} // ✅ redirect logic
-            className={`flex flex-col items-center justify-center text-[11px] transition-all duration-300 ${isActive(user ? "/dashboard" : "/registration")
-                ? "text-[#19745B] font-semibold"
-                : "text-gray-500"
-              }`}
-          >
-            <span className="text-xl mb-1">
-              <FaUser />
-            </span>
-            <span className="mt-1">{user ? "Dashboard" : "Account"}</span>
-          </Link>
-        </div>{" "}
-      </div>
+        <button
+          onClick={handleSaveAppPromo}
+          disabled={saving}
+          className="bg-blue-600 hover:bg-blue-700 disabled:opacity-60 text-white px-5 py-2 rounded-lg text-sm font-semibold"
+        >
+          {saving ? "Saving..." : "Save App Promo"}
+        </button>
+      </section>
     </div>
   );
-};
-
-export default Footer;
+}

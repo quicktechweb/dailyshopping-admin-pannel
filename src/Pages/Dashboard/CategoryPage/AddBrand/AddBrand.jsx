@@ -11,7 +11,7 @@ export default function AddBrand() {
 
   // Fetch brands from backend
   useEffect(() => {
-    fetch("https://dailyshopping-backend.onrender.com/api/brands")
+    fetch("http://localhost:5000/api/brands")
       .then((res) => res.json())
       .then((data) => setBrands(data));
   }, []);
@@ -53,7 +53,7 @@ export default function AddBrand() {
     let res, data;
     if (editId) {
       // UPDATE existing brand
-      res = await fetch(`https://dailyshopping-backend.onrender.com/api/brands/${editId}`, {
+      res = await fetch(`http://localhost:5000/api/brands/${editId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newBrand),
@@ -64,7 +64,7 @@ export default function AddBrand() {
       setEditId(null);
     } else {
       // ADD new brand
-      res = await fetch("https://dailyshopping-backend.onrender.com/api/brands", {
+      res = await fetch("http://localhost:5000/api/brands", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newBrand),
@@ -88,7 +88,7 @@ export default function AddBrand() {
 
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this brand?")) return;
-    await fetch(`https://dailyshopping-backend.onrender.com/api/brands/${id}`, { method: "DELETE" });
+    await fetch(`http://localhost:5000/api/brands/${id}`, { method: "DELETE" });
     setBrands(brands.filter((b) => b._id !== id));
   };
 

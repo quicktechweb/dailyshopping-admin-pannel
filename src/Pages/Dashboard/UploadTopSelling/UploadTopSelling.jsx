@@ -39,9 +39,9 @@ const UploadTopSelling = () => {
   const [form, setForm] = useState(emptyForm);
 
   useEffect(() => {
-    axios.get("https://dailyshopping-backend.onrender.com/api/categories").then((r) => setCategories(r.data));
-    axios.get("https://dailyshopping-backend.onrender.com/api/subcategories").then((r) => setSubcategories(r.data));
-    axios.get("https://dailyshopping-backend.onrender.com/api/childcategories").then((r) => setChildcategories(r.data));
+    axios.get("http://localhost:5000/api/categories").then((r) => setCategories(r.data));
+    axios.get("http://localhost:5000/api/subcategories").then((r) => setSubcategories(r.data));
+    axios.get("http://localhost:5000/api/childcategories").then((r) => setChildcategories(r.data));
     fetchProducts();
   }, []);
 
@@ -58,7 +58,7 @@ const UploadTopSelling = () => {
   }, [editingProduct]);
 
   const fetchProducts = async () => {
-    const res = await axios.get("https://dailyshopping-backend.onrender.com/api/topselling");
+    const res = await axios.get("http://localhost:5000/api/topselling");
     setProducts(res.data);
   };
 
@@ -113,12 +113,12 @@ const UploadTopSelling = () => {
     try {
       if (editingProduct) {
         await axios.put(
-          `https://dailyshopping-backend.onrender.com/api/topselling/${editingProduct._id}`,
+          `http://localhost:5000/api/topselling/${editingProduct._id}`,
           productData
         );
         setEditingProduct(null);
       } else {
-        await axios.post("https://dailyshopping-backend.onrender.com/api/topselling", productData);
+        await axios.post("http://localhost:5000/api/topselling", productData);
       }
       setForm(emptyForm);
       setFiles([]);
@@ -133,7 +133,7 @@ const UploadTopSelling = () => {
 
   const handleDelete = async (id) => {
     if (window.confirm("Delete this product?")) {
-      await axios.delete(`https://dailyshopping-backend.onrender.com/api/topselling/${id}`);
+      await axios.delete(`http://localhost:5000/api/topselling/${id}`);
       fetchProducts();
     }
   };

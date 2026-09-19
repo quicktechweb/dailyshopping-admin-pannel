@@ -99,7 +99,7 @@ const getConsignment = async (invoice) => {
 const fetchOrders = async () => {
   try {
     const res = await axios.get(
-      "https://dailyshopping-backend.onrender.com/api/orders"
+      "http://localhost:5000/api/orders"
     );
 
     const fullOrders = await Promise.all(
@@ -153,7 +153,7 @@ const fetchOrders = async () => {
  const handleUpdate = async (id, newStatus) => {
   try {
     await axios.put(
-      `https://dailyshopping-backend.onrender.com/api/orders/${id}/status`,
+      `http://localhost:5000/api/orders/${id}/status`,
       { status: newStatus }
     );
 
@@ -278,7 +278,7 @@ const getCourierStatus = async (orderId) => {
 
     // STEP 3: 🔥 Bulk update to your backend
     const dbUpdate = await axios.put(
-      "https://dailyshopping-backend.onrender.com/api/bulk-consignment",
+      "http://localhost:5000/api/bulk-consignment",
       { orders: updates }
     );
 
@@ -322,7 +322,7 @@ const getCourierStatus = async (orderId) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await axios.delete(`https://dailyshopping-backend.onrender.com/api/ordersdata/${id}`);
+          await axios.delete(`http://localhost:5000/api/ordersdata/${id}`);
           setOrder(ordering.filter(order => order._id !== id));
           Swal.fire('Deleted!', 'Order has been deleted.', 'success');
           if (selectedOrder?._id === id) setSelectedOrder(null);

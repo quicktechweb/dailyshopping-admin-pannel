@@ -15,7 +15,7 @@ console.log(notifications)
     setLoading(true);
     try {
       // 1️⃣ Get all active users
-      const usersRes = await axios.get("https://dailyshopping-backend.onrender.com/api/auth/active-users");
+      const usersRes = await axios.get("http://localhost:5000/api/auth/active-users");
       const users = usersRes.data.users || [];
 
       if (users.length === 0) {
@@ -25,7 +25,7 @@ console.log(notifications)
 
       // 2️⃣ Send notification to each user
       const promises = users.map((u) =>
-        axios.post("https://dailyshopping-backend.onrender.com/api/notification/create", {
+        axios.post("http://localhost:5000/api/notification/create", {
           userId: u._id,
           title,
           message,

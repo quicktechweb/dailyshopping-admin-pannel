@@ -45,7 +45,7 @@ const AddProject = () => {
     };
 
     try {
-      await axios.post(`https://dailyshopping-backend.onrender.com/postproject`, formData);  // Adjust the URL to your backend API
+      await axios.post(`http://localhost:5000/postproject`, formData);  // Adjust the URL to your backend API
       Swal.fire({
         icon: "success",
         title: "Post Success",

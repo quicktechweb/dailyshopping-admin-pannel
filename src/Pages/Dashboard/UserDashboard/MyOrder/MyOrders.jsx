@@ -41,7 +41,7 @@ console.log(user.displayName)
     if (!userAuth) return;
 
     const res = await axios.get(
-      "https://dailyshopping-backend.onrender.com/api/my-orders",
+      "http://localhost:5000/api/my-orders",
       { params: { userAuth } }
     );
 
@@ -163,7 +163,7 @@ console.log(user.displayName)
 
     // Send review to backend
     await axios.post(
-      `https://dailyshopping-backend.onrender.com/api/products/${selectedProduct._id}/review`,
+      `http://localhost:5000/api/products/${selectedProduct._id}/review`,
       {
         userAuth: user?.email || user?.phoneNumber,
         username: user?.displayName , // <-- store displayName
@@ -193,7 +193,7 @@ const handleDeleteOrder = async (orderId) => {
   if (!window.confirm("Are you sure you want to delete this order?")) return;
 
   try {
-    await axios.delete(`https://dailyshopping-backend.onrender.com/api/orders/${orderId}`, {
+    await axios.delete(`http://localhost:5000/api/orders/${orderId}`, {
       params: { userAuth: user?.email || user?.phoneNumber },
     });
 
